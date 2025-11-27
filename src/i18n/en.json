@@ -1,0 +1,195 @@
+{
+  "slogan": "Top Idol, Create Your AI Idol!",
+  "nav": {
+    "home": "Home",
+    "data": "Game Data",
+    "chat": "Idol Chatroom",
+    "community": "Creation Community",
+    "channel": "Idol Channel",
+    "fans": "Fans Circle",
+    "login": "Login",
+    "register": "Register",
+    "language": "Language"
+  },
+  "welcome": {
+    "enter": "Enter Website",
+    "features": "Features"
+  },
+  "features": {
+    "ai-idol": "AI Idol",
+    "mv-element": "MV Elements",
+    "boy-group": "Boy Group",
+    "girl-group": "Girl Group",
+    "idol-creation": "Idol Creation",
+    "training": "Training"
+  },
+  "home": {
+    "title": "World's Leading Immersive Interactive Social Metaverse",
+    "team-home": "Team Home",
+    "steps": {
+      "step01": {
+        "title": "Create AI Idols",
+        "desc": "Use creation tools to generate AI idol images and settings"
+      },
+      "step02": {
+        "title": "Form Idol Teams",
+        "desc": "Form multi-member teams with partners"
+      },
+      "step03": {
+        "title": "Create Dance and Songs",
+        "desc": "Choreograph dances and create original songs"
+      },
+      "step04": {
+        "title": "Design Idol Costumes",
+        "desc": "Design and match team performance costumes"
+      },
+      "step05": {
+        "title": "Hold Idol Performances",
+        "desc": "Organize online and offline performance activities"
+      },
+      "step06": {
+        "title": "Annual General Election",
+        "desc": "Annual selection with fan participation in voting"
+      }
+    },
+    "categories": {
+      "blog": "Blog",
+      "ugo": "UGO Featured",
+      "mv": "MV",
+      "live": "Live Stream",
+      "peak-idols": "Peak Idols",
+      "infinity-girls": "Infinity Girls"
+    }
+  },
+  "community": {
+    "categories": {
+      "all": "All",
+      "variety": "AI Variety Show",
+      "blog": "AI Blog",
+      "theater": "AI Theater",
+      "workshop": "AI Workshop"
+    },
+    "sort": {
+      "latest": "Latest Release",
+      "popular": "Most Popular",
+      "trending": "Trending Up",
+      "following": "Following First"
+    },
+    "time": {
+      "all": "All Time",
+      "day": "Today",
+      "week": "This Week",
+      "month": "This Month",
+      "year": "This Year"
+    },
+    "labels": {
+      "alpha-group": "ALPHA Boy Group",
+      "black-rose": "Black Rose Concept Photos"
+    },
+    "placeholder": "Search Creation Community",
+    "promoVideo": "Promotional Videos",
+    "tabs": {
+      "latest": "Latest",
+      "popular": "Popular"
+    },
+    "video": {
+      "notSupported": "Your browser does not support the video tag."
+    },
+    "comment": {
+      "placeholder": "Write a comment...",
+      "collect": "Collect",
+      "reply": "Reply"
+    }
+  },
+  "channel": {
+    "liveStream": "Idol Live Stream",
+    "calendar": "Live Calendar",
+    "commentPlaceholder": "Say something...",
+    "liveComment": "Live Comment",
+    "events": {
+      "cheer": "Cheer",
+      "ybyLive": "Yang Bingyi Live Stream",
+      "cyxLive": "Chen Yuxi Live Stream"
+    }
+  },
+  "data": {
+    "none": "None",
+    "groupTabs": {
+      "alpha-v": "Alpha V",
+      "la-gongon": "La GonGon",
+      "black-rose": "Black Rose",
+      "at-boys": "@Boys",
+      "peak-idols": "Peak Idols",
+      "infinity-girls": "Infinity Girls"
+    },
+    "titles": {
+      "promo-video": "Promotional Video",
+      "popular-songs": "Popular Songs",
+      "group-blogs": "Group Blogs"
+    },
+    "songs": {
+      "song1": "Too Soft Heart Too Soft",
+      "song2": "Too Soft Heart Too Soft Too Soft",
+      "song3": "Too Soft Heart Too Soft Too Soft Too Soft"
+    },
+    "blogs": {
+      "title": "Build Your Exclusive Audition Platform, Perfect Experience",
+      "team-intro": "Team Introduction",
+      "game-intro": "Game Introduction",
+      "video-subtitle": "The world's leading immersive interactive social metaverse, bringing your idols within reach."
+    },
+    "teamIntroduction": {
+      "title": "Team Members",
+      "age": "Age",
+      "birthdayZodiac": "Birthday/Zodiac",
+      "mbti": "MBTI",
+      "bloodType": "Blood Type",
+      "specialty": "Specialty",
+      "interests": "Interests",
+      "musicType": "Favorite Music",
+      "likedFood": "Favorite Food",
+      "dislikedFood": "Disliked Food",
+      "fears": "Fears",
+      "weaknesses": "Weaknesses",
+      "introduction": "Introduction",
+      "biography": "Biography"
+    }
+  },
+  "fans": {
+    "tabs": {
+      "hot": "Popular",
+      "latest": "Latest Posts",
+      "latest_comment": "Latest Comments",
+      "announcement": "Announcements"
+    },
+    "post": {
+      "like": "Like",
+      "comment": "Comment",
+      "share": "Share",
+      "collect": "Collect",
+      "view": "Views",
+      "publishTime": "Published on"
+    },
+    "labels": {
+      "post": "Post",
+      "video": "Video",
+      "notice": "Notice"
+    },
+    "stats": {
+      "postCount": "Posts: ",
+      "viewCount": "Views: "
+    },
+    "teamName": "SNH48 Team X",
+    "search": "Search",
+    "placeholder": "What's on your mind?",
+    "publish": "Publish",
+    "albumName": "Idol Photo Album"
+  },
+  "footer": {
+    "title": "AuditionGO",
+    "healthWarning": "Health Game Advisory:",
+    "warningContent": "Resist bad games, reject pirated games, pay attention to self-protection, beware of fraud, moderate gaming is good for the brain, excessive gaming is harmful to health, arrange time reasonably, and enjoy a healthy life.",
+    "copyright": "All Rights Reserved by Shanghai Jinsena",
+    "icpInfo": "ICP Filing No. 310106775081801240017 for Parrot AI's large model algorithm"
+  }
+}

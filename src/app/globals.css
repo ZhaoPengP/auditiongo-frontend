@@ -1,0 +1,333 @@
+@import 'tailwindcss';
+
+/* 引入自定义字体 AlibabaPuHuiTi（请将实际字体文件放入 public/fonts 目录）*/
+@font-face {
+  font-family: 'AlibabaPuHuiTi';
+  src:
+    url('/fonts/AlibabaPuHuiTi-3-55-Regular.woff2') format('woff2'),
+    url('/fonts/AlibabaPuHuiTi-3-55-Regular.woff') format('woff');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'AlibabaPuHuiTi';
+  src:
+    url('/fonts/AlibabaPuHuiTi-3-85-Bold.woff2') format('woff2'),
+    url('/fonts/AlibabaPuHuiTi-3-85-Bold.woff') format('woff');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+:root {
+  /* 主题色与前景背景 */
+  --brand: #130830;
+  --background: #ffffff;
+  --foreground: #171717;
+}
+
+/* Tailwind v4 主题扩展 */
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-brand: var(--brand);
+  --font-sans: 'AlibabaPuHuiTi', Arial, Helvetica, sans-serif;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+  }
+}
+
+/* 基础重置和移动端优化 */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 16px;
+  -webkit-text-size-adjust: 100%;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  scroll-behavior: smooth;
+  touch-action: manipulation;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans);
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  overflow-x: hidden;
+  position: relative;
+}
+
+/* 自定义脉冲缩放动画 */
+@keyframes pulse-scale {
+  from {
+    font-size: 22px;
+  }
+  to {
+    font-size: 28px;
+  }
+}
+
+/* 确保所有图片响应式 */
+img {
+  /* max-width: 100%;
+  height: auto;
+  display: block; */
+}
+
+/* 确保表单元素在移动端正常显示 */
+input,
+textarea,
+select,
+button {
+  max-width: 100%;
+  font-family: inherit;
+}
+
+/* 移动端触摸目标优化 */
+a,
+button,
+input[type='button'],
+input[type='submit'],
+input[type='reset'] {
+  /* min-height: 44px;
+  min-width: 44px; */
+  /* display: inline-flex; */
+  align-items: center;
+  justify-content: center;
+}
+
+/* 滚动优化 */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(0, 0, 0, 0.3);
+  border-radius: 3px;
+}
+
+/* 禁用双击缩放 */
+* {
+  touch-action: manipulation;
+}
+
+/* 动画类 */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in {
+  animation: fadeIn 1s ease-out forwards;
+}
+
+.animate-fade-in-delay {
+  animation: fadeIn 1s ease-out 0.3s forwards;
+  opacity: 0;
+}
+
+/* 加载动画 */
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.animate-spin {
+  animation: spin 1s linear infinite;
+}
+
+/* 顶部导航通用样式 */
+.header-fixed {
+  position: fixed;
+  width: 100%;
+  top: 0;
+  z-index: 50;
+  height: 80px;
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(10px);
+}
+.header-absolute {
+  width: 100%;
+  position: absolute;
+  top: 0;
+  z-index: 50;
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(10px);
+}
+
+/* 渐变按钮样式（用于欢迎页进入官网按钮）*/
+.btn-gradient {
+  background: linear-gradient(180deg, #bf1eff -18%, #0d62f4 100%);
+}
+.btn-tab {
+  background-image: url('/image/common/but-bg.png');
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+}
+.btn-tab1 {
+  background-image: url('/image/home/bg9.png');
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+}
+
+.hidden-last:last-child {
+  .line {
+    display: none;
+    /* width: 50vw; */
+  }
+}
+.hidden-last:first-child {
+  .befer-line {
+    display: none;
+  }
+}
+.line-test:before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 10px;
+  /* 核心：径向渐变模拟点状边框 */
+  background-image: radial-gradient(circle, #666 1px, transparent 1px);
+  /* 控制点的间距：40px一个周期（点+间隙） */
+  background-size: 18px 12px;
+  /* 调整内边距，避免点超出圆形范围 */
+  padding: 1px;
+  /* 裁剪背景到边框区域，确保点只在边缘显示 */
+  -webkit-background-clip: content-box;
+  background-clip: content-box;
+}
+
+.active-nav:before {
+  content: ' ';
+  display: block;
+  position: absolute;
+  top: -24px;
+  left: calc(50% - 50px);
+  height: 0;
+  width: 0;
+  background-image: url('/image/common/nav-bg.png');
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  transition: all 0.3s ease;
+  animation: navGrowIn 0.3s ease forwards;
+  z-index: -1;
+}
+
+@keyframes navGrowIn {
+  from {
+    height: 0;
+    width: 0;
+    top: calc(50%);
+    left: calc(50%);
+  }
+  to {
+    height: 100px;
+    width: 100px;
+    top: -24px;
+    left: calc(50% - 50px);
+  }
+}
+
+.date-bg:after {
+  content: ' ';
+  display: block;
+  position: absolute;
+  top: -40px;
+  left: calc(50% - 50px);
+  height: 0;
+  width: 0;
+  background-image: url('/image/home/date-bg.png');
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  transition: all 0.5s ease;
+}
+
+/* 当父元素可见时触发动画 */
+.date-bg {
+  position: relative;
+}
+
+/* 可以通过添加类来触发动画，或者在父元素可见时自动触发 */
+.date-bg:after {
+  animation: growIn 0.5s ease forwards;
+}
+
+@keyframes growIn {
+  from {
+    height: 0;
+    width: 0;
+    top: calc(50%);
+    left: calc(50%);
+  }
+  to {
+    height: 100px;
+    width: 100px;
+    top: -40px;
+    left: calc(50% - 50px);
+  }
+}
+
+.active-border:after {
+  /* border-image:url('/image/home/bg3.png') 30 30 stretch; */
+  /* border: 3px solid #bf1eff; */
+  content: ' ';
+  display: block;
+  position: absolute;
+  top: -12px;
+  left: -16px;
+  height: 112%;
+  width: 112%;
+  background-image: url('/image/home/bg23.png');
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+}
+
+.border-bg {
+  /* border-radius: 50%;
+  background-image:
+    radial-gradient(circle, #333 2px, transparent 2px),
+    radial-gradient(circle, #333 2px, transparent 2px),
+    radial-gradient(circle, #333 2px, transparent 2px),
+    radial-gradient(circle, #333 2px, transparent 2px);
+  background-size: 20px 20px;
+  background-position:
+    0 0,
+    0 100%,
+    100% 0,
+    0 0;
+  background-repeat: repeat-x, repeat-x, repeat-y, repeat-y;
+  background-origin: padding-box; */
+  background-image: url('/image/home/bg20.png');
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+}

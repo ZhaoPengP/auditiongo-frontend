@@ -1,0 +1,195 @@
+{
+  "slogan": "Top Idol，打造你的 AI 偶像！",
+  "nav": {
+    "home": "首页",
+    "data": "游戏资料",
+    "chat": "偶像聊天室",
+    "community": "创作社区",
+    "channel": "偶像频道",
+    "fans": "游戏论坛",
+    "login": "登录",
+    "register": "注册",
+    "language": "多语言"
+  },
+  "welcome": {
+    "enter": "进入官网",
+    "features": "功能特色"
+  },
+  "features": {
+    "ai-idol": "AI偶像",
+    "mv-element": "MV元素",
+    "boy-group": "男团",
+    "girl-group": "女团",
+    "idol-creation": "偶像创作",
+    "training": "培养"
+  },
+  "fans": {
+    "tabs": {
+      "hot": "热门",
+      "latest": "最新发帖",
+      "latest_comment": "最新评论",
+      "announcement": "公告"
+    },
+    "post": {
+      "like": "点赞",
+      "comment": "评论",
+      "share": "分享",
+      "collect": "收藏",
+      "view": "浏览",
+      "publishTime": "发布于"
+    },
+    "labels": {
+      "post": "帖子",
+      "video": "视频",
+      "notice": "公告"
+    },
+    "stats": {
+      "postCount": "帖子数",
+      "viewCount": "浏览量"
+    },
+    "teamName": "SNH48 X队（TEAM X）",
+    "search": "搜索",
+    "placeholder": "想说点什么？",
+    "publish": "发布",
+    "albumName": "偶像相册"
+  },
+  "home": {
+    "title": "全球领先 immersive 互动社交元宇宙",
+    "team-home": "团队主页",
+    "steps": {
+      "step01": {
+        "title": "制作AI偶像",
+        "desc": "使用创作工具生成 AI 偶像形象与设定"
+      },
+      "step02": {
+        "title": "组建偶像团队",
+        "desc": "与伙伴共同组建多人成员团队"
+      },
+      "step03": {
+        "title": "舞步歌曲创作",
+        "desc": "编排舞步并创作原创歌曲"
+      },
+      "step04": {
+        "title": "创作偶像服装",
+        "desc": "设计搭配团队演出服装"
+      },
+      "step05": {
+        "title": "举办偶像演出",
+        "desc": "组织线上线下的演出活动"
+      },
+      "step06": {
+        "title": "年度总选",
+        "desc": "年度评选，粉丝参与投票"
+      }
+    },
+    "categories": {
+      "blog": "博客",
+      "ugo": "UGO精选",
+      "mv": "MV",
+      "live": "直播",
+      "peak-idols": "Peak Idols",
+      "infinity-girls": "Infinity Girls"
+    }
+  },
+  "community": {
+    "categories": {
+      "all": "全部",
+      "variety": "AI综艺",
+      "blog": "AI博客",
+      "theater": "AI剧场",
+      "workshop": "AI工坊"
+    },
+    "sort": {
+      "latest": "最新发布",
+      "popular": "最热推荐",
+      "trending": "趋势上升",
+      "following": "关注优先"
+    },
+    "time": {
+      "all": "全部时间",
+      "day": "今天",
+      "week": "本周",
+      "month": "本月",
+      "year": "今年"
+    },
+    "labels": {
+      "alpha-group": "ALPHA 男子组合",
+      "black-rose": "Black Rose 概念照"
+    },
+    "placeholder": "搜索相关视频",
+    "promoVideo": "宣传视频",
+    "tabs": {
+      "latest": "最新发布",
+      "popular": "热门推荐"
+    },
+    "video": {
+      "notSupported": "该视频格式不支持播放"
+    },
+    "comment": {
+      "placeholder": "发表评论...",
+      "collect": "收藏",
+      "reply": "回复"
+    }
+  },
+  "channel": {
+    "liveStream": "偶像直播",
+    "calendar": "直播日历",
+    "commentPlaceholder": "说点什么",
+    "liveComment": "直播评论区",
+    "events": {
+      "cheer": "加油",
+      "ybyLive": "杨冰怡直播",
+      "cyxLive": "陈俞希 直播"
+    }
+  },
+  "data": {
+    "none": "无",
+    "groupTabs": {
+      "alpha-v": "Alpha V",
+      "la-gongon": "La GonGon",
+      "black-rose": "Black Rose",
+      "at-boys": "@Boys",
+      "peak-idols": "Peak Idols",
+      "infinity-girls": "Infinity Girls"
+    },
+    "titles": {
+      "promo-video": "宣传视频",
+      "popular-songs": "热门歌曲",
+      "group-blogs": "团体博客"
+    },
+    "songs": {
+      "song1": "心太軟心太軟",
+      "song2": "心太軟心太軟心太軟",
+      "song3": "心太軟心太軟心太軟心太軟"
+    },
+    "blogs": {
+      "title": "打造专属的选秀平台，完美的体验",
+      "team-intro": "团队介绍",
+      "game-intro": "游戏介绍",
+      "video-subtitle": "全球领先的 immersive 互动社交元宇宙，让你的偶像触手可及。"
+    },
+    "teamIntroduction": {
+      "title": "团队成员",
+      "age": "年龄",
+      "birthdayZodiac": "生日/星座",
+      "mbti": "MBTI",
+      "bloodType": "血型",
+      "specialty": "特长",
+      "interests": "兴趣爱好",
+      "musicType": "喜欢的音乐",
+      "likedFood": "喜欢的食物",
+      "dislikedFood": "讨厌的食物",
+      "fears": "恐惧事物",
+      "weaknesses": "不擅长的事情",
+      "introduction": "简介",
+      "biography": "人物小传"
+    }
+  },
+  "footer": {
+    "title": "AuditionGO",
+    "healthWarning": "健康游戏忠告: ",
+    "warningContent": "抵制不良游戏，拒绝盗版游戏，注意自我保护，谨防受骗上当，适度游戏益脑，沉迷游戏伤身，合理安排时间，享受健康生活。",
+    "copyright": "上海金塞纳版权所有",
+    "icpInfo": "鹦鹉Al的大模型算法备案网信算备310106775081801240017号"
+  }
+}

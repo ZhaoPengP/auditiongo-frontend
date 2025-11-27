@@ -1,0 +1,195 @@
+{
+  "slogan": "Top Idol、あなたのAIアイドルを作ろう！",
+  "nav": {
+    "home": "ホーム",
+    "data": "ゲーム資料",
+    "chat": "アイドルチャット",
+    "community": "クリエイティブコミュニティ",
+    "channel": "アイドルチャンネル",
+    "fans": "ファンクラブ",
+    "login": "ログイン",
+    "register": "登録",
+    "language": "言語"
+  },
+  "welcome": {
+    "enter": "公式サイトへ",
+    "features": "機能の特徴"
+  },
+  "features": {
+    "ai-idol": "AIアイドル",
+    "mv-element": "MVエレメント",
+    "boy-group": "ボーイグループ",
+    "girl-group": "ガールグループ",
+    "idol-creation": "アイドル創造",
+    "training": "トレーニング"
+  },
+  "footer": {
+    "title": "AuditionGO",
+    "healthWarning": "健康ゲームアドバイザリー:",
+    "warningContent": "悪いゲームを拒否し、海賊版ゲームを拒否し、自己防衛に注意し、詐欺に気をつけ、適度なゲームは脳に良く、ゲームに夢中になると健康を損ないます。時間を合理的に安排し、健康的な生活を楽しんでください。",
+    "copyright": "上海ジンセナ（Shanghai Jinsena）全著作権所有",
+    "icpInfo": "パロットAIの大規模モデルアルゴリズム登録番号 310106775081801240017"
+  },
+  "channel": {
+    "liveStream": "アイドル生配信",
+    "calendar": "生配信カレンダー",
+    "commentPlaceholder": "何か言ってみて...",
+    "liveComment": "ライブコメント",
+    "events": {
+      "cheer": "応援",
+      "ybyLive": "楊氷怡生配信",
+      "cyxLive": "陳俞希生配信"
+    }
+  },
+  "data": {
+    "none": "なし",
+    "groupTabs": {
+      "alpha-v": "Alpha V",
+      "la-gongon": "La GonGon",
+      "black-rose": "Black Rose",
+      "at-boys": "@Boys",
+      "peak-idols": "Peak Idols",
+      "infinity-girls": "Infinity Girls"
+    },
+    "titles": {
+      "promo-video": "宣伝ビデオ",
+      "popular-songs": "人気曲",
+      "group-blogs": "グループブログ"
+    },
+    "songs": {
+      "song1": "心が柔らかすぎる心が柔らかすぎる",
+      "song2": "心が柔らかすぎる心が柔らかすぎる心が柔らかすぎる",
+      "song3": "心が柔らかすぎる心が柔らかすぎる心が柔らかすぎる心が柔らかすぎる"
+    },
+    "blogs": {
+      "title": "専属オーディションプラットフォームを作り、完璧な体験を提供",
+      "team-intro": "チーム紹介",
+      "game-intro": "ゲーム紹介",
+      "video-subtitle": "世界をリードする没入型インタラクティブソーシャルメタバース、アイドルをあなたの手元に。"
+    },
+    "teamIntroduction": {
+      "title": "チームメンバー",
+      "age": "年齢",
+      "birthdayZodiac": "誕生日/星座",
+      "mbti": "MBTI",
+      "bloodType": "血液型",
+      "specialty": "特技",
+      "interests": "興味・趣味",
+      "musicType": "好きな音楽",
+      "likedFood": "好きな食べ物",
+      "dislikedFood": "嫌いな食べ物",
+      "fears": "怖いもの",
+      "weaknesses": "苦手なこと",
+      "introduction": "紹介",
+      "biography": "人物小伝"
+    }
+  },
+  "community": {
+    "categories": {
+      "all": "すべて",
+      "variety": "AIバラエティ",
+      "blog": "AIブログ",
+      "theater": "AIシアター",
+      "workshop": "AIワークショップ"
+    },
+    "sort": {
+      "latest": "最新リリース",
+      "popular": "人気ランキング",
+      "trending": "トレンドアップ",
+      "following": "フォロー優先"
+    },
+    "time": {
+      "all": "全期間",
+      "day": "今日",
+      "week": "今週",
+      "month": "今月",
+      "year": "今年"
+    },
+    "labels": {
+      "alpha-group": "ALPHA ボーイグループ",
+      "black-rose": "Black Rose コンセプト写真"
+    },
+    "placeholder": "クリエイティブコミュニティを検索",
+    "promoVideo": "宣伝ビデオ",
+    "tabs": {
+      "latest": "最新",
+      "popular": "人気"
+    },
+    "video": {
+      "notSupported": "お使いのブラウザはビデオタグをサポートしていません。"
+    },
+    "comment": {
+      "placeholder": "コメントを書く...",
+      "collect": "収集",
+      "reply": "返信"
+    }
+  },
+  "home": {
+    "title": "世界をリードする没入型インタラクティブソーシャルメタバース",
+    "team-home": "チームホーム",
+    "steps": {
+      "step01": {
+        "title": "AIアイドルを作る",
+        "desc": "作成ツールを使用してAIアイドルの画像と設定を生成"
+      },
+      "step02": {
+        "title": "アイドルチームを結成",
+        "desc": "パートナーと共に複数メンバーのチームを結成"
+      },
+      "step03": {
+        "title": "ダンスと曲を作成",
+        "desc": "振り付けを組み、オリジナル曲を作成"
+      },
+      "step04": {
+        "title": "アイドル衣装をデザイン",
+        "desc": "チームのパフォーマンス衣装をデザインして組み合わせ"
+      },
+      "step05": {
+        "title": "アイドルパフォーマンスを開催",
+        "desc": "オンライン・オフラインのパフォーマンスイベントを開催"
+      },
+      "step06": {
+        "title": "年間総選挙",
+        "desc": "ファン参加の投票を含む年間選抜"
+      }
+    },
+    "categories": {
+      "blog": "ブログ",
+      "ugo": "UGO注目",
+      "mv": "MV",
+      "live": "ライブ配信",
+      "peak-idols": "Peak Idols",
+      "infinity-girls": "Infinity Girls"
+    }
+  },
+  "fans": {
+    "tabs": {
+      "hot": "人気",
+      "latest": "最新投稿",
+      "latest_comment": "最新コメント",
+      "announcement": "お知らせ"
+    },
+    "post": {
+      "like": "いいね",
+      "comment": "コメント",
+      "share": "シェア",
+      "collect": "コレクション",
+      "view": "閲覧",
+      "publishTime": "公開日"
+    },
+    "labels": {
+      "post": "投稿",
+      "video": "動画",
+      "notice": "お知らせ"
+    },
+    "stats": {
+      "postCount": "投稿数",
+      "viewCount": "閲覧数"
+    },
+    "teamName": "SNH48 チームX",
+    "search": "検索",
+    "placeholder": "何か言いたいことは？",
+    "publish": "公開",
+    "albumName": "アイドル写真集"
+  }
+}

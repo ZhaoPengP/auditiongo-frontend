@@ -1,0 +1,195 @@
+{
+  "slogan": "Top Idol, 나의 AI 아이돌을 만들자!",
+  "nav": {
+    "home": "홈",
+    "data": "게임 자료",
+    "chat": "아이돌 채팅룸",
+    "community": "창작 커뮤니티",
+    "channel": "아이돌 채널",
+    "fans": "팬 서클",
+    "login": "로그인",
+    "register": "회원가입",
+    "language": "언어"
+  },
+  "welcome": {
+    "enter": "공식 사이트로",
+    "features": "기능 특징"
+  },
+  "features": {
+    "ai-idol": "AI 아이돌",
+    "mv-element": "MV 엘리먼트",
+    "boy-group": "보이 그룹",
+    "girl-group": "걸 그룹",
+    "idol-creation": "아이돌 창작",
+    "training": "훈련"
+  },
+  "footer": {
+    "title": "AuditionGO",
+    "healthWarning": "건강 게임 권고:",
+    "warningContent": "나쁜 게임을 거부하고, 해적판 게임을 거부하세요. 자기 보호에 주의하고 사기 피해를 예방하세요.适度한 게임은 뇌 건강에 좋으며, 게임에 몰두하면 건강을 해칩니다. 시간을 합리적으로安排하고 건강한 생활을 즐기세요.",
+    "copyright": "상하이 진세나(Shanghai Jinsena) 저작권 소유",
+    "icpInfo": "앵무새 AI 대형 모델 알고리즘 등록 번호 310106775081801240017"
+  },
+  "channel": {
+    "liveStream": "아이돌 생방송",
+    "calendar": "생방송 달력",
+    "commentPlaceholder": "뭐라도 말해보세요...",
+    "liveComment": "라이브 댓글",
+    "events": {
+      "cheer": "응원",
+      "ybyLive": "양빙이 생방송",
+      "cyxLive": "천유희 생방송"
+    }
+  },
+  "data": {
+    "none": "없음",
+    "groupTabs": {
+      "alpha-v": "Alpha V",
+      "la-gongon": "La GonGon",
+      "black-rose": "Black Rose",
+      "at-boys": "@Boys",
+      "peak-idols": "Peak Idols",
+      "infinity-girls": "Infinity Girls"
+    },
+    "titles": {
+      "promo-video": "프로모션 비디오",
+      "popular-songs": "인기곡",
+      "group-blogs": "그룹 블로그"
+    },
+    "songs": {
+      "song1": "마음이 너무 부드러워 마음이 너무 부드러워",
+      "song2": "마음이 너무 부드러워 마음이 너무 부드러워 마음이 너무 부드러워",
+      "song3": "마음이 너무 부드러워 마음이 너무 부드러워 마음이 너무 부드러워 마음이 너무 부드러워"
+    },
+    "blogs": {
+      "title": "독점 오디션 플랫폼을 구축하여 완벽한 경험을",
+      "team-intro": "팀 소개",
+      "game-intro": "게임 소개",
+      "video-subtitle": "세계를 선도하는 몰입형 인터랙티브 소셜 메타버스, 당신의 아이돌을 손에 넣으세요."
+    },
+    "teamIntroduction": {
+      "title": "팀 멤버",
+      "age": "나이",
+      "birthdayZodiac": "생일/별자리",
+      "mbti": "MBTI",
+      "bloodType": "혈액형",
+      "specialty": "특기",
+      "interests": "관심사",
+      "musicType": "좋아하는 음악",
+      "likedFood": "좋아하는 음식",
+      "dislikedFood": "싫어하는 음식",
+      "fears": "두려움",
+      "weaknesses": "약점",
+      "introduction": "소개",
+      "biography": "인물소개"
+    }
+  },
+  "community": {
+    "categories": {
+      "all": "전체",
+      "variety": "AI 버라이어티",
+      "blog": "AI 블로그",
+      "theater": "AI 극장",
+      "workshop": "AI 워크샵"
+    },
+    "sort": {
+      "latest": "최신 출시",
+      "popular": "가장 인기 있는",
+      "trending": "트렌드 상승",
+      "following": "팔로잉 우선"
+    },
+    "time": {
+      "all": "전체 시간",
+      "day": "오늘",
+      "week": "이번 주",
+      "month": "이번 달",
+      "year": "올해"
+    },
+    "labels": {
+      "alpha-group": "ALPHA 보이 그룹",
+      "black-rose": "Black Rose 컨셉 사진"
+    },
+    "placeholder": "창작 커뮤니티 검색",
+    "promoVideo": "프로모션 비디오",
+    "tabs": {
+      "latest": "최신",
+      "popular": "인기"
+    },
+    "video": {
+      "notSupported": "귀하의 브라우저는 비디오 태그를 지원하지 않습니다."
+    },
+    "comment": {
+      "placeholder": "댓글 쓰기...",
+      "collect": "수집",
+      "reply": "답글"
+    }
+  },
+  "home": {
+    "title": "세계 최고의 몰입형 인터랙티브 소셜 메타버스",
+    "team-home": "팀 홈",
+    "steps": {
+      "step01": {
+        "title": "AI 아이돌 만들기",
+        "desc": "창작 도구를 사용하여 AI 아이돌 이미지와 설정 생성"
+      },
+      "step02": {
+        "title": "아이돌 팀 결성",
+        "desc": "파트너와 함께 다인원 멤버 팀 결성"
+      },
+      "step03": {
+        "title": "춤과 노래 창작",
+        "desc": "안무를 짜고 오리지널 노래 창작"
+      },
+      "step04": {
+        "title": "아이돌 의상 디자인",
+        "desc": "팀 공연 의상을 디자인하고 매칭"
+      },
+      "step05": {
+        "title": "아이돌 공연 개최",
+        "desc": "온라인 및 오프라인 공연 활동 조직"
+      },
+      "step06": {
+        "title": "연간 총선거",
+        "desc": "팬 참여 투표가 포함된 연간 선발"
+      }
+    },
+    "categories": {
+      "blog": "블로그",
+      "ugo": "UGO 추천",
+      "mv": "MV",
+      "live": "라이브 스트림",
+      "peak-idols": "Peak Idols",
+      "infinity-girls": "Infinity Girls"
+    }
+  },
+  "fans": {
+    "tabs": {
+      "hot": "인기",
+      "latest": "최신 게시물",
+      "latest_comment": "최신 댓글",
+      "announcement": "공지사항"
+    },
+    "post": {
+      "like": "좋아요",
+      "comment": "댓글",
+      "share": "공유",
+      "collect": "수집",
+      "view": "조회",
+      "publishTime": "게시일"
+    },
+    "labels": {
+      "post": "게시물",
+      "video": "비디오",
+      "notice": "공지사항"
+    },
+    "stats": {
+      "postCount": "게시물 수",
+      "viewCount": "조회수"
+    },
+    "teamName": "SNH48 팀X",
+    "search": "검색",
+    "placeholder": "무슨 생각을 하고 계세요?",
+    "publish": "게시",
+    "albumName": "아이돌 사진집"
+  }
+}

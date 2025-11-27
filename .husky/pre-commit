@@ -1,0 +1,3 @@
+# 在提交前执行 lint-staged（格式化与修复）
+# 为避免失败时备份 stash 影响工作区（看起来像“代码消失”），禁用备份与回滚。
+pnpm lint-staged --no-stash --relative
