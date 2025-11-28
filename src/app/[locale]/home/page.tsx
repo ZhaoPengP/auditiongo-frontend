@@ -13,7 +13,7 @@ import figure_ja from '@/moke/figure_ja.json'
 import figure_ko from '@/moke/figure_ko.json'
 import figure_zh_TW from '@/moke/figure_zh_TW.json'
 
-import { Swiper, SwiperSlide } from 'swiper/react'
+import { Swiper, SwiperSlide, SwiperRef } from 'swiper/react'
 import {
   EffectCoverflow,
   Pagination,
@@ -310,25 +310,19 @@ export default function HomePage() {
     []
   )
 
-  // 创建Swiper实例ref并添加类型定义
-  const swiperRef = useRef<{
-    swiper: { slideTo: (index: number) => void }
-  } | null>(null)
+  // 创建Swiper实例ref并使用正确的类型定义
+  const swiperRef = useRef<SwiperRef>(null)
   // 存储当前活动的幻灯片索引
   const [currentIndex, setCurrentIndex] = useState(0)
 
   // 跳转到指定索引的幻灯片
   const goToSlide = (index: number) => {
-    // 更详细地打印swiperRef.current的内容
-    if (swiperRef.current) {
-      // 检查是否有嵌套的swiper实例
-      if (swiperRef.current.swiper) {
-        // 尝试使用嵌套的swiper实例
-        if (typeof swiperRef.current.swiper.slideTo === 'function') {
-          swiperRef.current.swiper.slideTo(index)
-          return
-        }
-      }
+    if (
+      swiperRef.current &&
+      swiperRef.current.swiper &&
+      swiperRef.current.swiper.slideTo
+    ) {
+      swiperRef.current.swiper.slideTo(index)
     }
   }
 
