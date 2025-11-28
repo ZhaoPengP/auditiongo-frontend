@@ -1,4 +1,8 @@
 @import 'tailwindcss';
+@import 'swiper/css';
+@import 'swiper/css/navigation';
+@import 'swiper/css/pagination';
+@import 'swiper/css/scrollbar';
 
 /* 引入自定义字体 AlibabaPuHuiTi（请将实际字体文件放入 public/fonts 目录）*/
 @font-face {
@@ -108,10 +112,10 @@ input[type='reset'] {
   justify-content: center;
 }
 
-/* 滚动优化 */
+/* 滚动优化 - 隐藏滚动条 */
 ::-webkit-scrollbar {
-  width: 6px;
-  height: 6px;
+  width: 0;
+  height: 0;
 }
 
 ::-webkit-scrollbar-track {
@@ -119,8 +123,7 @@ input[type='reset'] {
 }
 
 ::-webkit-scrollbar-thumb {
-  background: rgba(0, 0, 0, 0.3);
-  border-radius: 3px;
+  background: transparent;
 }
 
 /* 禁用双击缩放 */
@@ -188,6 +191,11 @@ input[type='reset'] {
 }
 .btn-tab {
   background-image: url('/image/common/but-bg.png');
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+}
+.hover-btn:hover {
+  background-image: url('/image/common/hover-bt.png');
   background-repeat: no-repeat;
   background-size: 100% 100%;
 }

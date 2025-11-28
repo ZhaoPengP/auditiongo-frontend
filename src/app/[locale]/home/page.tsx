@@ -1,7 +1,6 @@
 'use client'
 // 首页：三个模块的基础结构与交互占位
-import { useState, useRef, useEffect } from 'react'
-import Link from 'next/link'
+import { useState, useMemo, useEffect, useRef } from 'react'
 import { useParams, useRouter } from 'next/navigation'
 import Image from 'next/image'
 import ImageViewer from '@/components/ImageViewer'
@@ -13,6 +12,14 @@ import figure_en from '@/moke/figure_en.json'
 import figure_ja from '@/moke/figure_ja.json'
 import figure_ko from '@/moke/figure_ko.json'
 import figure_zh_TW from '@/moke/figure_zh_TW.json'
+
+import { Swiper, SwiperSlide } from 'swiper/react'
+import {
+  EffectCoverflow,
+  Pagination,
+  Autoplay,
+  Navigation,
+} from 'swiper/modules'
 
 // 模块三：当前选中分类
 
@@ -106,7 +113,10 @@ export default function HomePage() {
             acc[group] = {
               groupName: item.groupName,
               introduction: item.introduction,
-              groupIcon: item.groupIcon,
+              groupIcon: item.groupIcon.replace(
+                '/image/data/role/',
+                '/image/home/logo/'
+              ),
               children: [],
             }
           }
@@ -202,6 +212,37 @@ export default function HomePage() {
       ],
     },
   ]
+
+  const groupedItems = useMemo(
+    () => [
+      {
+        id: 'ai-idol',
+        label: '3D偶像创造',
+        image: '/image/home/video1478.png',
+      },
+      {
+        id: 'ugc-smart',
+        label: 'ugc智能生成',
+        image: '/image/home/video1806.png',
+      },
+      {
+        id: 'clothing-design',
+        label: '服装自由设计',
+        image: '/image/data/video5525.png',
+      },
+      {
+        id: 'mv-play',
+        label: '谱面玩法自定义',
+        image: '/image/data/video3715.png',
+      },
+      {
+        id: 'idol-interaction',
+        label: '偶像交互陪伴',
+        image: '/image/home/bg34.png',
+      },
+    ],
+    [messages]
+  )
   // 组件挂载时设置初始展开状态
   useEffect(() => {
     // 使用setTimeout确保在下一个渲染周期执行，避免级联渲染警告
@@ -247,9 +288,6 @@ export default function HomePage() {
   const handleCommunity = (path: string) => {
     router.push(`/${locale}/${path}`)
   }
-  const handleBlog = (path: string) => {
-    router.push(`/${locale}/${path}`)
-  }
   const [isGroupInfoVisible, setIsGroupInfoVisible] = useState(false)
   const showGroupInfo = (show: boolean) => {
     if (show) {
@@ -267,10 +305,39 @@ export default function HomePage() {
   }
   const [currentVideo, setCurrentVideo] = useState('')
 
+  const modules = useMemo(
+    () => [Pagination, Autoplay, EffectCoverflow, Navigation],
+    []
+  )
+
+  // 创建Swiper实例ref并添加类型定义
+  const swiperRef = useRef<{
+    swiper: { slideTo: (index: number) => void }
+  } | null>(null)
+  // 存储当前活动的幻灯片索引
+  const [currentIndex, setCurrentIndex] = useState(0)
+
+  // 跳转到指定索引的幻灯片
+  const goToSlide = (index: number) => {
+    // 更详细地打印swiperRef.current的内容
+    if (swiperRef.current) {
+      // 检查是否有嵌套的swiper实例
+      if (swiperRef.current.swiper) {
+        // 尝试使用嵌套的swiper实例
+        if (typeof swiperRef.current.swiper.slideTo === 'function') {
+          swiperRef.current.swiper.slideTo(index)
+          return
+        }
+      }
+    }
+  }
+
+  const [newsIndex, setNewsIndex] = useState(0)
+
   return (
-    <div className="space-y-16 max-w-7xl mx-auto pb-20 pt-[40px]">
+    <div className="lg:max-w-[1248px] mx-auto pb-20 pt-[40px]">
       {/* 模块一 */}
-      <section>
+      <section className="relative">
         {/* <h2 className="text-[40px] font-bold text-center">
           {messages?.home?.title || '全球领先沉浸式互动社交元宇宙'}
         </h2> */}
@@ -370,22 +437,143 @@ export default function HomePage() {
           </div>
         </div>
       </section>
+      {/* 模块二：新闻资讯 */}
+      <section className="h-[320px] mt-[70px] relative z-[1]">
+        <div className="grid grid-cols-2 gap-6 h-full">
+          <div className="overflow-hidden rounded-[10px] relative">
+            <div>
+              <Swiper
+                ref={swiperRef}
+                className="h-full w-full"
+                // 设置为无限滚动模式
+                slidesPerView={1}
+                spaceBetween={20}
+                loop={true}
+                // 设置自动播放，每3秒切换一次
+                autoplay={{
+                  delay: 3000,
+                  disableOnInteraction: false,
+                  pauseOnMouseEnter: true,
+                }}
+                // 左右滑动效果
+                slidesOffsetBefore={0}
+                slidesOffsetAfter={0}
+                modules={modules}
+                // 监听滑动变化，获取当前索引
+                onSlideChange={(swiper) => {
+                  // 计算实际索引（考虑loop模式）
+                  const realIndex = swiper.realIndex
+                  setCurrentIndex(realIndex)
+                }}
+              >
+                {groupedItems.map((item, index) => (
+                  <SwiperSlide
+                    key={item.id}
+                    className="h-[100%] w-full flex items-center justify-center"
+                  >
+                    <div className="relative w-full max-w-[650px] mx-auto">
+                      <Image
+                        src={item.image || ''}
+                        alt={item.label || ''}
+                        height={320}
+                        width={650}
+                        className="h-[320px] w-full object-cover rounded-lg"
+                      />
+                    </div>
+                  </SwiperSlide>
+                ))}
+              </Swiper>
+            </div>
+            <div className="absolute bottom-[10px] left-[50%] translate-x-[-50%] z-[10]">
+              {groupedItems.map((g, i) => (
+                <button
+                  key={i}
+                  onClick={() => goToSlide(i)}
+                  className={`rounded h-[12px] w-[12px] cursor-pointer ml-2 bg-repeat bg-size-[100%_100%] transition-transform duration-300 ${
+                    currentIndex === i
+                      ? 'bg-[url("/image/home/start2.png")] transform scale-125'
+                      : 'bg-[url("/image/home/start1.png")]'
+                  }`}
+                ></button>
+              ))}
+            </div>
+          </div>
+          <div>
+            <div className="h-[48px] flex items-center justify-center border-b-[1px] border-white border-dashed">
+              <h2 className='bg-[url("/image/home/bg35.png")] bg-no-repeat text-[28px] px-[18px] w-[166px] h-[60px] pt-[6px]'>
+                资讯中心
+              </h2>
+              <div className="grid grid-cols-4 w-[calc(100%_-_136px)]">
+                {['最新', '新闻', '公告', '活动'].map((item, i) => (
+                  <div
+                    key={i}
+                    className={`text-[14px] font-thin cursor-pointer ${newsIndex === i ? 'text-[#33E11F]' : 'text-white'} flex items-center justify-center`}
+                    onClick={() => setNewsIndex(i)}
+                  >
+                    {newsIndex === i && (
+                      <Image
+                        src="/image/home/start3.png"
+                        alt={item}
+                        width={21}
+                        height={14}
+                        className="h-[14px] w-[21px] transform rotate-180"
+                      />
+                    )}
+                    <p className="px-[2px] text-[18px]">{item}</p>
+                    {newsIndex === i && (
+                      <Image
+                        src="/image/home/start3.png"
+                        alt={item}
+                        width={21}
+                        height={14}
+                        className="h-[14px] w-[21px]"
+                      />
+                    )}
+                  </div>
+                ))}
+              </div>
+            </div>
+            <ul>
+              {[1, 2, 3, 4, 5].map((i) => (
+                <li
+                  key={i}
+                  className="text-[14px] h-[46px] flex items-center justify-between border-b-[1px] border-white border-dashed cursor-pointer"
+                >
+                  <div className="flex items-center justify-center gap-2">
+                    <p className="sign px-2 text-[#333] rounded-[4px] text-[14px]">
+                      活动
+                    </p>
+                    <style>{`
+                        .sign {
+                          font-style: oblique;
+                          background: linear-gradient(96deg, #F9FFDE -11%, #EAFFFB 28%, #B5EDFF 64%, #EECDFF 113%);
+                        }
+                      `}</style>
+                    <p>2023年08月24日 15:00</p>
+                  </div>
+                  <div>11/14</div>
+                </li>
+              ))}
+            </ul>
+            <div className="bg-[url('/image/home/bg33.png')] bg-size-[100%_10%] h-[40] w-full flex items-center justify-center cursor-pointer">
+              更多
+              <span className="text-[#33E11F] px-[4px]">新闻资讯</span>+
+            </div>
+          </div>
+        </div>
+      </section>
 
-      <Image
-        src="/image/home/bg14.png"
-        alt="bg3"
-        width={459}
-        height={150}
-        className="w-[459px] h-[150px] mx-auto"
-      />
-      {/* 模块二：团体介绍 */}
-      <section className='relative bg-[url("/image/home/bg13.png")] bg-no-repeat bg-cover bg-size-[100%_100%] p-7'>
+      {/* 模块三：团体介绍 */}
+      <h3 className="mb-6 text-[16px] inline-block bg-[url('/image/home/test2.png')] bg-no-repeat text-[28px] px-[28px] min-w-[204px] h-[68px] mt-[40px]">
+        AOD组合团体
+      </h3>
+      <section className='relative bg-[url("/image/home/bg13.png")] bg-no-repeat bg-cover bg-size-[100%_100%] px-7 pb-23 pt-17'>
         <Image
           src="/image/home/bg17.png"
           alt="bg17"
           width={144}
           height={440}
-          className="absolute top-[200px] right-[-50px] w-[144px] h-[440px] mx-auto"
+          className="absolute top-[480px] right-[-50px] w-[144px] h-[440px] mx-auto"
         />
         <Image
           src="/image/home/bg22.png"
@@ -394,7 +582,7 @@ export default function HomePage() {
           height={204}
           className="absolute left-[-50px] w-[42px] h-[204px] mx-auto"
         />
-        <div className="mb-4 flex gap-3">
+        <div className="flex gap-8">
           {/* {groupTabs.map((g, i) => (
             <button
               key={g.groupName}
@@ -406,79 +594,97 @@ export default function HomePage() {
               {g.groupName}
             </button>
           ))} */}
-          <div className='flex align-center justify-evenly bg-[url("/image/home/bg4.png")] bg-no-repeat bg-cover bg-size-[100%_100%] h-[170px] w-[220px]'>
-            <button
-              onClick={() => setActiveGroup(6)}
-              className={`rounded h-[32px] px-3  mt-[122px] text-[14px] py-1 cursor-pointer hover:text-[#33E11F] ${
-                activeGroup === 6 ? 'btn-tab1' : 'bg-black'
-              }`}
-            >
-              {groupTabs[6].groupName}
-            </button>
-            <button
-              onClick={() => setActiveGroup(5)}
-              className={`rounded h-[32px] px-3 mt-[122px] text-[14px] py-1 cursor-pointer hover:text-[#33E11F] ${
-                activeGroup === 5 ? 'btn-tab1' : 'bg-black'
-              }`}
-            >
-              {groupTabs[5].groupName}
-            </button>
+          <div className="flex gap-5">
+            <Image
+              src="/image/home/bg30.png"
+              alt="bg31"
+              width={192}
+              height={157}
+              className="w-[192px] h-[157px] mx-auto"
+            />
+            <Image
+              src="/image/home/bg31.png"
+              alt="bg31"
+              width={14}
+              height={191}
+              className="w-[14px] h-[191px] mx-auto"
+            />
           </div>
-          <div className='flex align-center justify-evenly bg-[url("/image/home/bg5.png")] bg-no-repeat bg-cover bg-size-[100%_100%] h-[170px] w-[220px]'>
-            <button
-              onClick={() => setActiveGroup(3)}
-              className={`rounded h-[32px] px-3 mt-[122px] text-[14px] py-1 cursor-pointer hover:text-[#33E11F] ${
-                activeGroup === 3 ? 'btn-tab1' : 'bg-black'
-              }`}
-            >
-              {groupTabs[3].groupName}
-            </button>
+          <div className="flex gap-[19px] pt-7 align-center">
+            <div className='flex align-center justify-evenly bg-[url("/image/home/bg4.png")] bg-no-repeat bg-cover bg-size-[100%_100%] h-[132px] w-[180px]'>
+              <button
+                onClick={() => setActiveGroup(6)}
+                className={`rounded h-[32px] px-2  mt-[92px] text-[12px] cursor-pointer hover:text-[#33E11F] ${
+                  activeGroup === 6 ? 'btn-tab1' : 'bg-black'
+                }`}
+              >
+                {groupTabs[6].groupName}
+              </button>
+              <button
+                onClick={() => setActiveGroup(5)}
+                className={`rounded h-[32px] px-2 mt-[92px] text-[12px] cursor-pointer hover:text-[#33E11F] ${
+                  activeGroup === 5 ? 'btn-tab1' : 'bg-black'
+                }`}
+              >
+                {groupTabs[5].groupName}
+              </button>
+            </div>
+            <div className='flex align-center justify-evenly bg-[url("/image/home/bg5.png")] bg-no-repeat bg-cover bg-size-[100%_100%] h-[132px] w-[180px]'>
+              <button
+                onClick={() => setActiveGroup(3)}
+                className={`rounded h-[32px] px-2 mt-[92px] text-[12px] cursor-pointer hover:text-[#33E11F] ${
+                  activeGroup === 3 ? 'btn-tab1' : 'bg-black'
+                }`}
+              >
+                {groupTabs[3].groupName}
+              </button>
 
-            <button
-              onClick={() => setActiveGroup(4)}
-              className={`rounded h-[32px] px-3 mt-[122px] text-[14px] py-1 cursor-pointer hover:text-[#33E11F] ${
-                activeGroup === 4 ? 'btn-tab1' : 'bg-black'
-              }`}
-            >
-              {groupTabs[4].groupName}
-            </button>
-          </div>
-          <div className='flex align-center justify-evenly bg-[url("/image/home/bg6.png")] bg-no-repeat bg-cover bg-size-[100%_100%] h-[170px] w-[336px]'>
-            <button
-              onClick={() => setActiveGroup(2)}
-              className={`rounded h-[32px] px-3 mt-[122px] text-[14px] py-1 cursor-pointer hover:text-[#33E11F] ${
-                activeGroup === 2 ? 'btn-tab1' : 'bg-black'
-              }`}
-            >
-              {groupTabs[2].groupName}
-            </button>
+              <button
+                onClick={() => setActiveGroup(4)}
+                className={`rounded h-[32px] px-2 mt-[92px] text-[12px] cursor-pointer hover:text-[#33E11F] ${
+                  activeGroup === 4 ? 'btn-tab1' : 'bg-black'
+                }`}
+              >
+                {groupTabs[4].groupName}
+              </button>
+            </div>
+            <div className='flex align-center justify-evenly bg-[url("/image/home/bg6.png")] bg-no-repeat bg-cover bg-size-[100%_100%] h-[132px] w-[264px]'>
+              <button
+                onClick={() => setActiveGroup(2)}
+                className={`rounded h-[32px] px-2 mt-[92px] text-[12px] cursor-pointer hover:text-[#33E11F] ${
+                  activeGroup === 2 ? 'btn-tab1' : 'bg-black'
+                }`}
+              >
+                {groupTabs[2].groupName}
+              </button>
 
-            <button
-              onClick={() => setActiveGroup(1)}
-              className={`rounded h-[32px] px-3 mt-[122px] text-[14px] py-1 cursor-pointer hover:text-[#33E11F] ${
-                activeGroup === 1 ? 'btn-tab1' : 'bg-black'
-              }`}
-            >
-              {groupTabs[1].groupName}
-            </button>
+              <button
+                onClick={() => setActiveGroup(1)}
+                className={`rounded h-[32px] px-2 mt-[92px] text-[12px] cursor-pointer hover:text-[#33E11F] ${
+                  activeGroup === 1 ? 'btn-tab1' : 'bg-black'
+                }`}
+              >
+                {groupTabs[1].groupName}
+              </button>
 
-            <button
-              onClick={() => setActiveGroup(0)}
-              className={`rounded h-[32px] px-3 mt-[122px] text-[14px] py-1 cursor-pointer hover:text-[#33E11F] ${
-                activeGroup === 0 ? 'btn-tab1' : 'bg-black'
-              }`}
-            >
-              {groupTabs[0].groupName}
-            </button>
-          </div>
-          <div className='flex align-center justify-evenly bg-[url("/image/home/bg15.png")] bg-no-repeat bg-cover bg-size-[100%_100%] h-[170px] w-[320px]'>
-            <button className="rounded h-[32px] px-3 mt-[122px] text-[14px] py-1 cursor-pointer bg-black">
-              敬请期待
-            </button>
+              <button
+                onClick={() => setActiveGroup(0)}
+                className={`rounded h-[32px] px-2 mt-[92px] text-[12px] cursor-pointer hover:text-[#33E11F] ${
+                  activeGroup === 0 ? 'btn-tab1' : 'bg-black'
+                }`}
+              >
+                {groupTabs[0].groupName}
+              </button>
+            </div>
+            <div className='flex align-center justify-evenly bg-[url("/image/home/bg15.png")] bg-no-repeat bg-cover bg-size-[100%_100%] h-[132px] w-[220px]'>
+              <button className="rounded h-[32px] px-2 mt-[92px] text-[12px] cursor-pointer bg-black">
+                敬请期待
+              </button>
+            </div>
           </div>
         </div>
         <div
-          className="relative h-[647px] w-full bg-[url('/image/home/bg12.png')] bg-no-repeat bg-size-[100%_100%] cursor-pointer rounded-[10px]"
+          className="relative h-[647px] w-[1096] mx-auto bg-[url('/image/home/bg12.png')] bg-no-repeat bg-size-[100%_100%] cursor-pointer rounded-[10px]"
           onClick={() => showGroupInfo(true)}
         >
           {/* 使用动画状态控制，而不是直接条件渲染 */}
@@ -496,36 +702,47 @@ export default function HomePage() {
               />
               {/* 右侧悬浮蒙版 */}
               <div
-                className={`absolute top-0 right-0 w-[395px] h-full bg-black/60 bg-[url('/image/home/bg25.png')] bg-no-repeat bg-size-[100%_100%] p-4 rounded-[10px] ${isFadingOut ? 'animate-slideOutRight' : 'animate-slideInRight'}`}
+                className={`absolute top-0 right-0 w-[395px] h-full bg-black/60 bg-[url('/image/home/bg25.png')] bg-no-repeat bg-size-[100%_100%] rounded-[10px] ${isFadingOut ? 'animate-slideOutRight' : 'animate-slideInRight'}`}
               >
-                <div className="w-[180px] h-[180px] rounded-full mx-auto flex items-center justify-center bg-[url('/image/home/bg24.png')] bg-size-[110%_110%] bg-no-repeat bg-center">
+                {/* <Image
+                  src="/image/home/bg32.png"
+                  alt="avatar"
+                  width={395}
+                  height={256}
+                  className="h-[256px] w-[395px] absolute top-0 left-0 z-[-1]"
+                /> */}
+                <div className="relative w-[395px] h-[256px] rounded-full mx-auto flex items-center justify-center z-[10]">
                   <Image
                     src={groupTabs[activeGroup].groupIcon || ''}
                     alt="avatar"
-                    width={118}
-                    height={118}
-                    className="h-[118px] w-[118px]"
+                    width={395}
+                    height={256}
+                    className="h-[256px] w-[395px]"
+                  />
+                  <SvgIcon
+                    src="/svg/15583.svg"
+                    className="inline-block w-20 h-20 transform rotate-180 absolute top-[190px] left-[164px]"
                   />
                 </div>
-                <div className="mb-2 text-lg font-bold text-center text-white mt-[20px]">
+                {/* <div className="mb-2 text-lg font-bold text-center text-white mt-[20px]">
                   {groupTabs[activeGroup].groupName}
-                </div>
-                <div className="mb-4 text-sm text-white/80 px-[20px]">
+                </div> */}
+                <div className="mb-4 text-sm text-white/80 px-[20px] mt-[80px]">
                   {groupTabs[activeGroup].introduction}
                 </div>
                 <div className="flex gap-3 px-[20px] justify-center mt-[20px]">
                   <a
-                    className="rounded border border-white px-3 py-2 w-[120px] text-center h-[40px] cursor-pointer"
+                    className="rounded border border-[#73F851] px-3 py-2 w-[120px] text-center h-[40px] cursor-pointer text-[#73F851]"
                     onClick={() => handleCommunity('/fans')}
                   >
                     {messages?.home?.['team-home']}
+                    <SvgIcon
+                      src="/svg/right.svg"
+                      fill="#73F851"
+                      stroke="#73F851"
+                      className="inline-block w-3 h-3 ml-2"
+                    />
                   </a>
-                  {/* <a
-                className="rounded border border-white px-3 py-2 w-[120px] text-center h-[40px] cursor-pointer"
-                onClick={() => handleBlog('/fans')}
-              >
-                Blog 博客
-              </a> */}
                 </div>
               </div>
             </div>

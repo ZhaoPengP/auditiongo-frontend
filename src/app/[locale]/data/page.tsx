@@ -1,10 +1,11 @@
 'use client'
 // 团体介绍页面：包含标签导航、宣传区域、成员列表、视频区域、歌曲列表和博客区域
-import { useState, useMemo } from 'react'
+import { useState, useMemo, useRef } from 'react'
 import Image from 'next/image'
 import ImageViewer from '@/components/ImageViewer'
 import SvgIcon from '@/components/SvgIcon'
 import VideoOverlay from '@/components/VideoOverlay'
+import MusicPlayer from '@/components/MusicPlay'
 import { useParams, useRouter } from 'next/navigation'
 import { getMessages } from '@/lib/i18n'
 import figure_zh from '@/moke/figure_zh.json'
@@ -78,11 +79,23 @@ export default function DataPage() {
 
   // 歌曲数据
   const songs = [
-    { id: '1', title: messages?.data?.songs?.song1 || '心太軟心太軟' },
-    { id: '2', title: messages?.data?.songs?.song2 || '心太軟心太軟心太軟' },
+    {
+      id: '1',
+      title: messages?.data?.songs?.song1 || '心太軟心太軟',
+      src: '/misce/1.mp3',
+      cover: '/image/data/music.png',
+    },
+    {
+      id: '2',
+      title: messages?.data?.songs?.song2 || '心太軟心太軟心太軟',
+      src: '/misce/1.mp3',
+      cover: '/image/data/music.png',
+    },
     {
       id: '3',
       title: messages?.data?.songs?.song3 || '心太軟心太軟心太軟心太軟',
+      src: '/misce/1.mp3',
+      cover: '/image/data/music.png',
     },
   ]
 
@@ -106,6 +119,13 @@ export default function DataPage() {
 
   const router = useRouter()
 
+  // 播放指定歌曲
+  const playSong = (index: number) => {
+    if (musicPlayerRef.current) {
+      musicPlayerRef.current.playSong(index)
+    }
+  }
+
   const openGameIntroduction = () => {
     router.push(`/${locale}/data/game-introduction`)
   }
@@ -116,6 +136,11 @@ export default function DataPage() {
   // 状态管理
   const [activeGroup, setActiveGroup] = useState(0)
   const [isVideoOverlayVisible, setIsVideoOverlayVisible] = useState(false)
+  // 定义MusicPlayer组件的ref类型
+  interface MusicPlayerRefType {
+    playSong: (index: number) => void
+  }
+  const musicPlayerRef = useRef<MusicPlayerRefType | null>(null)
 
   // 控制视频遮罩层
   const openVideoOverlay = () => setIsVideoOverlayVisible(true)
@@ -177,7 +202,7 @@ export default function DataPage() {
                     onClick={() => openTeamIntroduction()}
                   >
                     {member.roleName}
-                    <SvgIcon src="/svg/right.svg" width={10} height={18} />
+                    <SvgIcon src="/svg/right.svg" width={10} height={10} />
                   </li>
                 ))}
               </ul>
@@ -200,7 +225,7 @@ export default function DataPage() {
                 </h3>
                 <video
                   src="/video/video15.mp4"
-                  className="w-[780px] h-[500px] rounded-lg object-cover"
+                  className="w-[780px] h-[512px] rounded-lg object-cover"
                 ></video>
                 <div
                   className="absolute top-[55%] left-[50%] transform -translate-x-[50%] -translate-y-[50%] cursor-pointer"
@@ -215,12 +240,12 @@ export default function DataPage() {
                 </div>
               </div>
               {/* 歌曲 */}
-              <div className="w-[424px] h-[600px] rounded-lg">
+              <div className="w-[424px] h-[600px] rounded-lg relative">
                 <h3 className="mb-6 text-[16px] inline-block bg-[url('/image/home/test2.png')] bg-no-repeat text-[28px] px-[28px] min-w-[204px] h-[68px]">
                   {messages?.data?.titles?.['popular-songs'] || '热门歌曲'}
                 </h3>
                 <ul className="text-white bg-[#282A32] px-[35px] py-[30px] rounded-md h-[500px] overflow-y-auto">
-                  {[1, 2, 3, 4].map((song) => (
+                  {[1, 2].map((song) => (
                     <li
                       key={song}
                       className="text-white h-[110px] flex items-center border-b border-white/30 last:border-b-0"
@@ -236,7 +261,8 @@ export default function DataPage() {
                         {songs.map((item, idx) => (
                           <li
                             key={item.id}
-                            className="mt-[10px] text-[14px] flex items-center justify-between ml-[10px] w-[256px] first:mt-0 group cursor-pointer"
+                            className="mt-[10px] text-[14px] flex items-center justify-between ml-[10px] w-[256px] first:mt-0 group cursor-pointer hover:text-[#33E11F] transition-colors"
+                            onClick={() => playSong(idx)}
                           >
                             <span className="w-[200px] overflow-hidden whitespace-nowrap text-ellipsis">
                               {item.title}
@@ -254,6 +280,16 @@ export default function DataPage() {
                     </li>
                   ))}
                 </ul>
+
+                <div className="absolute bottom-0 left-0 w-full border-t border-white/30">
+                  <MusicPlayer
+                    songs={songs}
+                    ref={musicPlayerRef}
+                    onSongSelect={(songId) => {
+                      console.log('播放歌曲:', songId)
+                    }}
+                  />
+                </div>
               </div>
             </div>
           </section>

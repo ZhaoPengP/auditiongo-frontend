@@ -200,6 +200,30 @@ export default function FeatureCarousel({
     }
   }, [interval, items.length])
 
+  // 处理鼠标悬停事件 - 暂停自动轮播
+  const handleMouseEnter = useCallback(() => {
+    // 清除定时器以暂停自动轮播
+    const timer = timerRef.current
+    if (timer) {
+      clearInterval(timer)
+      timerRef.current = null
+    }
+  }, [])
+
+  // 处理鼠标离开容器事件 - 恢复自动轮播
+  const handleCarouselMouseLeave = useCallback(() => {
+    // 重新启动自动轮播
+    if (interval && interval > 0 && items.length > 1) {
+      // 使用局部变量来存储和更新timerRef
+      if (timerRef.current) {
+        clearInterval(timerRef.current)
+      }
+      timerRef.current = setInterval(() => {
+        setActiveIndex((i) => (i + 1) % items.length)
+      }, interval)
+    }
+  }, [interval, items.length])
+
   // 切换到上一张（用于预览图片点击）
   const handlePrevClick = useCallback(() => {
     const newIndex = (activeIndex - 1 + items.length) % items.length
@@ -216,8 +240,10 @@ export default function FeatureCarousel({
 
   const currentItem = items[activeIndex]
   // 计算上一张和下一张的索引
-  const prevIndex = (activeIndex - 1 + items.length) % items.length
-  const nextIndex = (activeIndex + 1) % items.length
+  // const prevIndex = (activeIndex - 1 + items.length) % items.length
+  // const nextIndex = (activeIndex + 1) % items.length
+  const prevIndex = activeIndex === 0 ? items.length - 1 : activeIndex - 1
+  const nextIndex = activeIndex === items.length - 1 ? 0 : activeIndex + 1
   const prevItem = items[prevIndex]
   const nextItem = items[nextIndex]
 
@@ -282,9 +308,10 @@ export default function FeatureCarousel({
       <div
         className={`relative w-full ${carouselHeight} mb-6 flex items-center justify-center gap-2`}
         style={{ perspective: '1500px' }}
+        onMouseEnter={handleMouseEnter}
+        onMouseLeave={handleCarouselMouseLeave}
       >
         {/* 左侧预览（上一张） */}
-        {}
         {items.length > 1 &&
           renderPreviewImage(prevItem, '30deg', 'left', handlePrevClick)}
 
@@ -331,19 +358,22 @@ export default function FeatureCarousel({
         </div>
 
         {/* 右侧预览（下一张） */}
-        {}
         {items.length > 1 &&
           renderPreviewImage(nextItem, '-30deg', 'right', handleNextClick)}
       </div>
 
       {/* 底部导航栏 */}
-      <div className="flex flex-wrap gap-3 justify-center mt-[40px]">
+      <div
+        className="flex flex-wrap gap-3 justify-center mt-[40px]"
+        onMouseEnter={handleMouseEnter}
+        onMouseLeave={handleCarouselMouseLeave}
+      >
         {items.map((item, i) => (
           <button
             key={item.id}
             className={`
-              px-6 py-3 rounded-lg text-white text-sm font-medium transition-all cursor-pointer border-2 border-transparent hover:shadow-lg hover:shadow-purple-500/50 hover:border-2 hover:border-purple-400
-              ${activeIndex === i ? `btn-tab` : 'bg-white/10 hover:bg-white/15'}
+              px-6 py-3 rounded-lg text-white text-sm font-medium transition-all cursor-pointer bg-white/10 hover-btn
+              ${activeIndex === i ? `btn-tab` : ''}
             `}
             onClick={() => goToIndex(i)}
           >

@@ -18,12 +18,6 @@ import {
 } from 'swiper/modules'
 import { getMessages } from '@/lib/i18n'
 
-// Import Swiper styles
-import 'swiper/css'
-import 'swiper/css/navigation'
-import 'swiper/css/pagination'
-import 'swiper/css/scrollbar'
-
 export default function CommunityPage() {
   const { locale } = useParams() as { locale: string }
   // 分类筛选数据

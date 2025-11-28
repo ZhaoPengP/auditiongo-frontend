@@ -1,4 +1,5 @@
 'use client'
+
 // 欢迎页：首屏视频背景，顶部左侧仅 logo + slogan，右侧仅"进入官网"按钮
 import { useMemo, Suspense, useState, useEffect } from 'react'
 import Image from 'next/image'
@@ -29,33 +30,28 @@ function WelcomeContent() {
     () => [
       {
         id: 'ai-idol',
-        label: messages.features['ai-idol'],
-        image: '/image/common/p1.png',
+        label: '3D偶像创造',
+        image: '/image/home/video1478.png',
       },
       {
-        id: 'mv-element',
-        label: messages.features['mv-element'],
-        image: '/image/common/p2.png',
+        id: 'ugc-smart',
+        label: 'ugc智能生成',
+        image: '/image/home/video1806.png',
       },
       {
-        id: 'boy-group',
-        label: messages.features['boy-group'],
-        image: '/image/common/p3.png',
+        id: 'clothing-design',
+        label: '服装自由设计',
+        image: '/image/data/video5525.png',
       },
       {
-        id: 'girl-group',
-        label: messages.features['girl-group'],
-        image: '/image/common/p1.png',
+        id: 'mv-play',
+        label: '谱面玩法自定义',
+        image: '/image/data/video3715.png',
       },
       {
-        id: 'idol-creation',
-        label: messages.features['idol-creation'],
-        image: '/image/common/p2.png',
-      },
-      {
-        id: 'training',
-        label: messages.features['training'],
-        image: '/image/common/p3.png',
+        id: 'idol-interaction',
+        label: '偶像交互陪伴',
+        image: '/image/fans/banner1.png',
       },
     ],
     [messages]
@@ -98,10 +94,42 @@ function WelcomeContent() {
     ),
     [messages, locale]
   )
+
+  const [showScrollIcon, setShowScrollIcon] = useState(true)
+
+  useEffect(() => {
+    const handleScroll = () => {
+      // 判断是否在首屏（滚动距离小于视口高度的10%）
+      const isFirstScreen = window.scrollY < window.innerHeight * 0.1
+      setShowScrollIcon(isFirstScreen)
+    }
+
+    // 添加滚动监听
+    window.addEventListener('scroll', handleScroll)
+
+    // 清理函数
+    return () => window.removeEventListener('scroll', handleScroll)
+  }, [])
+
+  const ScrollIcon = useMemo(
+    () =>
+      showScrollIcon ? (
+        <div className="animate-bounce mt-[60px]">
+          <SvgIcon
+            src="/svg/scroll-down.svg"
+            size={90}
+            className="text-white"
+          />
+        </div>
+      ) : (
+        <div className="mt-[60px] w-[90px] h-[90px]"></div>
+      ),
+    [showScrollIcon]
+  )
   // 下载
   const DownloadApp = useMemo(
     () => (
-      <div className="absolute bottom-40 flex w-[277px] h-[195px] items-center justify-between bg-[url('/image/common/download-bg.png')] bg-no-repeat bg-size-[277px_195px]">
+      <div className="relative flex w-[277px] h-[195px] items-center justify-between bg-[url('/image/common/download-bg.png')] bg-no-repeat bg-size-[277px_195px] transform scale-150">
         <Image
           src="/image/common/bg9.png"
           alt="logo"
@@ -151,52 +179,25 @@ function WelcomeContent() {
     []
   )
 
-  const [showScrollIcon, setShowScrollIcon] = useState(true)
-
-  useEffect(() => {
-    const handleScroll = () => {
-      // 判断是否在首屏（滚动距离小于视口高度的10%）
-      const isFirstScreen = window.scrollY < window.innerHeight * 0.1
-      setShowScrollIcon(isFirstScreen)
-    }
-
-    // 添加滚动监听
-    window.addEventListener('scroll', handleScroll)
-
-    // 清理函数
-    return () => window.removeEventListener('scroll', handleScroll)
-  }, [])
-
-  const ScrollIcon = useMemo(
-    () =>
-      showScrollIcon && (
-        <div className="fixed bottom-10 left-1/2 transform -translate-x-1/2 animate-bounce">
-          <SvgIcon
-            src="/svg/scroll-down.svg"
-            size={48}
-            className="text-white"
-          />
-        </div>
-      ),
-    [showScrollIcon]
-  )
   const videoSrc = '/video/video1.mp4'
 
   return (
-    <div className="min-h-screen bg-black text-white">
+    <div className="min-h-screen bg-black text-white relative">
       {TopBar}
       {/* 第一屏：视频背景 + 中央文案与播放按钮 */}
-      <section className="relative flex h-[100vh] w-full items-center justify-center overflow-hidden ">
+      <section className="relative flex h-[100vh] w-full items-center justify-center overflow-hidden">
         {/* 视频占位，实际使用时替换为 <video> 资源 */}
         <video loop autoPlay muted className="w-full h-full object-cover">
           <source src={videoSrc} type="video/mp4" />
         </video>
         {/* 8+ */}
         <AgeRecommendations className="bottom-44 left-10" />
-        {/* 下载 */}
-        {DownloadApp}
-        {/* 滚动图标 */}
-        {ScrollIcon}
+        <div className="absolute flex flex-col items-center justify-center bottom-[10px]">
+          {/* 下载 */}
+          {DownloadApp}
+          {/* 滚动图标 */}
+          {ScrollIcon}
+        </div>
       </section>
 
       {/* 第二屏：功能特色 + 轮播 + 6 个 Tab */}
@@ -225,7 +226,7 @@ function WelcomeContent() {
           height={614}
           className="w-[551px] h-[614px] absolute bottom-[20px] right-0"
         />
-        <div className="absolute right-[280px] transform -translate-y-[-100px]">
+        <div className="absolute right-[60px] bottom-[100px]">
           {DownloadApp}
         </div>
       </section>
