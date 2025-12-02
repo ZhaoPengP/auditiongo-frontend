@@ -204,7 +204,8 @@ export default function FansPage() {
   const [currentPostId, setCurrentPostId] = useState<string | null>(null) // 当前正在评论的post ID
   const inputRef = React.useRef<HTMLDivElement>(null)
 
-  const [activeGroup, setActiveGroup] = useState('')
+  const [activeGroup, setActiveGroup] = useState('01')
+  const [activeGroup1, setActiveGroup1] = useState('game')
 
   const [specificTab, setSpecificTab] = useState('01')
   return (
@@ -224,16 +225,20 @@ export default function FansPage() {
                   {item.name}
                 </div>
               ))
-            : ['游戏活动', '模式交流', '休闲交友'].map((item, i) => (
+            : [
+                { label: '游戏活动', id: 'game' },
+                { label: '模式交流', id: 'mode' },
+                { label: '休闲交友', id: 'social' },
+              ].map((item, i) => (
                 <div
-                  key={i}
-                  className={`px-[15px] py-[10px] cursor-pointer text-black bg-[#fff] rounded-[10px] mb-[10px] bg-black text-white ${activeGroup === item ? 'btn-tab' : ''}`}
+                  key={item.id}
+                  className={`px-[15px] py-[10px] cursor-pointer text-black bg-[#fff] rounded-[10px] mb-[10px] bg-black text-white ${activeGroup1 === item.id ? 'btn-tab' : ''}`}
                   onClick={() => {
-                    setActiveGroup(item)
+                    setActiveGroup1(item.id)
                     setData((prevData) => shuffleArray(prevData))
                   }}
                 >
-                  {item}
+                  {item.label}
                 </div>
               ))}
         </div>

@@ -133,7 +133,7 @@ export default function Header({
             {t('nav', 'login')}/{t('nav', 'register')}
           </b>
         </Link> */}
-        <button className="hidden text-sm w-[209px] h-[80px] lg:flex items-center justify-center bg-[url('/image/common/bg4.png')] bg-size-[209px_49px] bg-no-repeat bg-center cursor-pointer">
+        <button className="hidden text-sm w-[209px] h-[80px] lg:flex items-center justify-center bg-[url('/image/common/bg4.png')] bg-size-[209px_80px] bg-no-repeat bg-center cursor-pointer">
           <b className="text-[22px]">
             {t('nav', 'login')}/{t('nav', 'register')}
           </b>

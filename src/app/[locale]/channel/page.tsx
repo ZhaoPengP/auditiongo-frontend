@@ -53,7 +53,7 @@ export default function ChannelPage() {
           <div className="flex justify-between items-center border border-white/10 rounded-2xl overflow-hidden">
             <div className="w-[808px] h-[640px] bg-white/10">
               <video
-                src="/video/video18.mp4"
+                src="https://webyyt.48.cn/owebtest/video1.mp4"
                 autoPlay
                 loop
                 muted

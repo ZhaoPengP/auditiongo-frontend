@@ -48,6 +48,6 @@ public/                    # 字体、图片、视频等静态资源
 - 方案：`next-intl` 或 `next-i18next`，结合 App Router 的服务端渲染。
 - 文案组织：以命名空间管理（如 `common`, `home`, `welcome`, `community` 等）。
 
-# auditiongo-frontend
+# auditiongo
 
 鹦鹉团官网

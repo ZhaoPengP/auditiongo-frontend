@@ -17,10 +17,9 @@ const nextConfig = {
   },
 
   // 2. 打包输出配置
-  output: process.platform === 'win32' ? undefined : 'standalone',
+  output: 'standalone',
   distDir: '.next',
-  // 解决Windows系统上的符号链接权限问题
-  // 在Windows上禁用standalone模式，避免符号链接创建失败
+  // 这些设置将在现有的experimental配置中添加
   reactStrictMode: true,
 
   // 3. Turbopack 配置
@@ -41,7 +40,13 @@ const nextConfig = {
     optimizePackageImports: ['lodash', 'react-icons'],
   },
 
-  // 注意：在Windows平台上使用默认构建模式，不使用standalone以避免符号链接权限问题
+  // 解决Windows系统上的符号链接权限问题
+  // 将outputFileTracingRoot移到顶层配置
+  outputFileTracingRoot: process.cwd(),
+  // 禁用符号链接，强制使用文件复制
+  outputFileTracingExcludes: {
+    '*': ['node_modules/.pnpm/**'],
+  },
 
   // 5. 环境变量配置
   env: {

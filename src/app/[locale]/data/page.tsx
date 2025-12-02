@@ -106,14 +106,14 @@ export default function DataPage() {
       title: messages?.data?.blogs?.title || '打造专属的选秀平台，完美的体验',
       date: '2025-01-21',
       image: '/image/data/video3715.png',
-      video: '/video/video3715.mp4',
+      video: 'https://webyyt.48.cn/owebtest/video1.mp4',
     },
     {
       id: '2',
       title: messages?.data?.blogs?.title || '打造专属的选秀平台，完美的体验',
       date: '2025-01-21',
       image: '/image/data/video5525.png',
-      video: '/video/video5525.mp4',
+      video: 'https://webyyt.48.cn/owebtest/video1.mp4',
     },
   ]
 
@@ -129,8 +129,14 @@ export default function DataPage() {
   const openGameIntroduction = () => {
     router.push(`/${locale}/data/game-introduction`)
   }
-  const openTeamIntroduction = () => {
-    router.push(`/${locale}/data/team-introduction`)
+  const openTeamIntroduction = (id: string) => {
+    if (!id) {
+      router.push(`/${locale}/data/team-introduction?groupId=${activeGroup}`)
+    } else {
+      router.push(
+        `/${locale}/data/team-introduction?groupId=${activeGroup}&id=${id}`
+      )
+    }
   }
 
   // 状态管理
@@ -145,7 +151,9 @@ export default function DataPage() {
   // 控制视频遮罩层
   const openVideoOverlay = () => setIsVideoOverlayVisible(true)
   const closeVideoOverlay = () => setIsVideoOverlayVisible(false)
-  const [currentVideo, setCurrentVideo] = useState('/video/video15.mp4')
+  const [currentVideo, setCurrentVideo] = useState(
+    'https://webyyt.48.cn/owebtest/video1.mp4'
+  )
 
   return (
     <div className="mx-auto pb-10 pt-[20px]">
@@ -178,7 +186,8 @@ export default function DataPage() {
               width={1148}
               height={100}
               alt="logo"
-              className="w-[1148px]"
+              onClick={() => openTeamIntroduction('')}
+              className="w-[1148px] cursor-pointer"
             ></Image>
             <div className="absolute top-26 right-0 w-[290px] h-[400px] bg-[#006D45] border border-white/30 rounded-lg px-[30px] py-[20px]">
               <div className="flex items-center w-[50%]">
@@ -199,7 +208,7 @@ export default function DataPage() {
                   <li
                     key={member.id}
                     className="text-white mt-[10px] bg-[#005033] px-[15px] py-[5px] rounded-md h-[40px] flex items-center justify-between cursor-pointer"
-                    onClick={() => openTeamIntroduction()}
+                    onClick={() => openTeamIntroduction(member.id.toString())}
                   >
                     {member.roleName}
                     <SvgIcon src="/svg/right.svg" width={10} height={10} />
@@ -224,7 +233,7 @@ export default function DataPage() {
                   {messages?.data?.titles?.['promo-video'] || '宣传视频'}
                 </h3>
                 <video
-                  src="/video/video15.mp4"
+                  src="https://webyyt.48.cn/owebtest/video1.mp4"
                   className="w-[780px] h-[512px] rounded-lg object-cover"
                 ></video>
                 <div

@@ -205,28 +205,28 @@ const MusicPlayer = forwardRef<MusicPlayerRef, MusicPlayerProps>(
             <div className="flex items-center gap-4">
               <button
                 onClick={playPrevious}
-                className="text-white hover:text-[#33E11F] transition-colors"
+                className="text-white hover:text-[#33E11F] transition-colors transform rotate-180 cursor-pointer"
                 aria-label="Previous song"
               >
-                <SvgIcon src="/svg/15298.svg" width={20} height={20} />
+                <SvgIcon src="/svg/misNext.svg" width={14} height={14} />
               </button>
               <button
                 onClick={togglePlay}
-                className="text-white hover:text-[#33E11F] transition-colors"
+                className="text-white hover:text-[#33E11F] transition-colors cursor-pointer"
                 aria-label={isPlaying ? 'Pause' : 'Play'}
               >
                 {isPlaying ? (
-                  <SvgIcon src="/svg/stop-music.svg" width={24} height={24} />
+                  <SvgIcon src="/svg/misPlay.svg" width={24} height={24} />
                 ) : (
-                  <SvgIcon src="/svg/play-music.svg" width={24} height={24} />
+                  <SvgIcon src="/svg/misStop.svg" width={24} height={24} />
                 )}
               </button>
               <button
                 onClick={playNext}
-                className="text-white hover:text-[#33E11F] transition-colors"
+                className="text-white hover:text-[#33E11F] transition-colors cursor-pointer"
                 aria-label="Next song"
               >
-                <SvgIcon src="/svg/15300.svg" width={20} height={20} />
+                <SvgIcon src="/svg/misNext.svg" width={14} height={14} />
               </button>
             </div>
 

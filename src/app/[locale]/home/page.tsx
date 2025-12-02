@@ -57,38 +57,38 @@ export default function HomePage() {
       desc:
         messages?.home?.steps?.step01?.desc ||
         '使用创作工具生成 AI 偶像形象与设定',
-      src: '/video/video1.mp4',
+      src: 'https://webyyt.48.cn/owebtest/video1.mp4',
     },
     {
       id: '02',
       // title: messages?.home?.steps?.step02?.title || '组建偶像团队',
       title: '轻松制造歌舞作品',
       desc: messages?.home?.steps?.step02?.desc || '与伙伴共同组建多人成员团队',
-      src: '/video/video14.mp4',
+      src: 'https://webyyt.48.cn/owebtest/video1.mp4',
     },
     {
       id: '03',
       title: '游戏玩法内容',
       desc: messages?.home?.steps?.step03?.desc || '编排舞步并创作原创歌曲',
-      src: '/video/video29.mp4',
+      src: 'https://webyyt.48.cn/owebtest/video1.mp4',
     },
     {
       id: '04',
       title: '玩家实时交互',
       desc: messages?.home?.steps?.step04?.desc || '设计搭配团队演出服装',
-      src: '/video/video30.mp4',
+      src: 'https://webyyt.48.cn/owebtest/video1.mp4',
     },
     {
       id: '05',
       title: '一键生成演艺节目',
       desc: messages?.home?.steps?.step05?.desc || '组织线上线下的演出活动',
-      src: '/video/video27.mp4',
+      src: 'https://webyyt.48.cn/owebtest/video1.mp4',
     },
     {
       id: '06',
       title: '参与全球总选活动',
       desc: messages?.home?.steps?.step06?.desc || '年度评选，粉丝参与投票',
-      src: '/video/video23.mp4',
+      src: 'https://webyyt.48.cn/owebtest/video1.mp4',
     },
   ]
 
@@ -148,20 +148,20 @@ export default function HomePage() {
   const categoryTabs = [
     {
       id: '01',
-      title: '游戏玩法',
+      title: '玩法',
       icon: '/image/common/ic1.png',
       children: [
         {
           id: '011',
           title: '游戏玩法',
           image: '/image/home/video1478.png',
-          video: '/video/video1478.mp4',
+          video: 'https://webyyt.48.cn/owebtest/video1.mp4',
         },
         {
           id: '012',
           title: '游戏内容',
           image: '/image/home/video1806.png',
-          video: '/video/video1806.mp4',
+          video: 'https://webyyt.48.cn/owebtest/video1.mp4',
         },
       ],
     },
@@ -173,41 +173,41 @@ export default function HomePage() {
         {
           id: '021',
           title: 'MV',
-          image: '/image/common/p3.png',
+          image: '/image/common/1.png',
         },
         {
           id: '022',
           title: '播客',
           image: '/image/home/video1478.png',
-          video: '/video/video1478.mp4',
+          video: 'https://webyyt.48.cn/owebtest/video1.mp4',
         },
         {
           id: '023',
           title: '直播',
           image: '/image/home/video1806.png',
-          video: '/video/video1806.mp4',
+          video: 'https://webyyt.48.cn/owebtest/video1.mp4',
         },
         {
           id: '024',
           title: '短剧',
-          image: '/image/common/p3.png',
+          image: '/image/common/3.png',
         },
       ],
     },
     {
       id: '03',
-      title: '其他',
+      title: 'UGC',
       icon: '/image/common/ic3.png',
       children: [
         {
           id: '031',
-          title: '游戏玩法',
-          image: '/image/common/p1.png',
+          title: '作品1',
+          image: '/image/common/2.png',
         },
         {
           id: '032',
-          title: '游戏内容',
-          image: '/image/common/p2.png',
+          title: '作品2',
+          image: '/image/common/4.png',
         },
       ],
     },
@@ -217,28 +217,23 @@ export default function HomePage() {
     () => [
       {
         id: 'ai-idol',
-        label: '3D偶像创造',
-        image: '/image/home/video1478.png',
+        label: '鹦鹉创作大赛',
+        image: '/image/home/l1.png',
       },
       {
         id: 'ugc-smart',
-        label: 'ugc智能生成',
+        label: '偶像征集活动',
         image: '/image/home/video1806.png',
       },
       {
         id: 'clothing-design',
-        label: '服装自由设计',
+        label: '新版本登场',
         image: '/image/data/video5525.png',
       },
       {
         id: 'mv-play',
-        label: '谱面玩法自定义',
+        label: '人气偶像组合',
         image: '/image/data/video3715.png',
-      },
-      {
-        id: 'idol-interaction',
-        label: '偶像交互陪伴',
-        image: '/image/home/bg34.png',
       },
     ],
     [messages]
@@ -358,7 +353,7 @@ export default function HomePage() {
                   <div
                     className={`relative flex items-center justify-center rounded-full bg-no-repeat bg-size-[100%_100%] ease-in duration-300 ${
                       active === idx
-                        ? 'border-white h-32 w-32 bg-[url("/image/home/bg20.png")]'
+                        ? 'border-white h-32 w-32 bg-[url("/image/home/bg36.png")]'
                         : 'border-white/50 h-26 w-26 bg-[url("/image/home/bg19.png")]'
                     }`}
                   >
@@ -366,26 +361,12 @@ export default function HomePage() {
                       className={`text-sm font-bold w-[80px] text-center ${active === idx ? 'mt-[-8px]' : ''}`}
                     >
                       <p
-                        className={`z-[10] h-[22px] ${active === idx ? 'relative text-[22px] mb-5' : ''}`}
+                        className={`z-[10] h-[22px] ${active === idx ? 'relative text-[26px] mb-3 text-[#000] italic' : ''}`}
                       >
                         {s.id}
                       </p>
                       {active === idx && (
                         <>
-                          <Image
-                            src="/image/common/bg3.png"
-                            alt="bg3"
-                            width={118}
-                            height={20}
-                            className="w-[98px] h-[20px] absolute top-[calc(50%_-_30px)] left-[calc(50%_-_48px)] z-[4]"
-                          />
-                          <SvgIcon
-                            src="/svg/start.svg"
-                            alt="start"
-                            width={24}
-                            height={24}
-                            className="w-[14px] h-[14px] absolute top-[calc(50%_-_12px)] left-[calc(50%_-_8px)] z-[4]"
-                          />
                           <Image
                             src="/image/home/bg21.png"
                             alt="bg3"
@@ -396,7 +377,7 @@ export default function HomePage() {
                         </>
                       )}
                       <p
-                        className={`text-[14px] text-center font-thin ${active === idx ? '' : 'mt-2'}`}
+                        className={`text-[14px] text-center font-thin font-bold ${active === idx ? 'text-[#000]' : 'mt-2'}`}
                       >
                         {s.title}
                       </p>
@@ -435,7 +416,7 @@ export default function HomePage() {
       <section className="h-[320px] mt-[70px] relative z-[1]">
         <div className="grid grid-cols-2 gap-6 h-full">
           <div className="overflow-hidden rounded-[10px] relative">
-            <div>
+            <div className="h-[284px]">
               <Swiper
                 ref={swiperRef}
                 className="h-full w-full"
@@ -477,8 +458,20 @@ export default function HomePage() {
                   </SwiperSlide>
                 ))}
               </Swiper>
+              <div className="h-[36px] grid grid-cols-4 bg-[#222]">
+                {groupedItems.map((item, index) => (
+                  <div
+                    key={item.id}
+                    className={`w-full h-full text-[14px] flex items-center justify-center cursor-pointer border-b-[2px]  ${currentIndex === index ? 'bg-[#000] text-[#33E11F]' : 'border-[#222]'}`}
+                    onClick={() => goToSlide(index)}
+                  >
+                    <p>{item.label}</p>
+                    <div className="absolute bottom-0 left-0 w-full h-[2px] bg-[linear-gradient(90deg,rgba(0,0,0,0)0%,#EBFEDF0%,#CAFBFE44%,#EED2FE98%)]"></div>
+                  </div>
+                ))}
+              </div>
             </div>
-            <div className="absolute bottom-[10px] left-[50%] translate-x-[-50%] z-[10]">
+            {/* <div className="absolute bottom-[10px] left-[50%] translate-x-[-50%] z-[10]">
               {groupedItems.map((g, i) => (
                 <button
                   key={i}
@@ -490,7 +483,7 @@ export default function HomePage() {
                   }`}
                 ></button>
               ))}
-            </div>
+            </div> */}
           </div>
           <div>
             <div className="h-[48px] flex items-center justify-center border-b-[1px] border-white border-dashed">
@@ -748,7 +741,7 @@ export default function HomePage() {
       <section>
         <div className="mt-20 mb-20">
           <div className="mx-auto flex items-center justify-center h-[46px] w-[264px] bg-[url('/image/common/bg3.png')] bg-no-repeat bg-size-[264px_46px]">
-            <h2 className=" text-2xl font-bold text-white">博客精选</h2>
+            <h2 className=" text-2xl font-bold text-white">精选专题</h2>
           </div>
         </div>
         <div className="flex">

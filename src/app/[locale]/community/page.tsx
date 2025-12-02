@@ -106,13 +106,13 @@ export default function CommunityPage() {
       {
         id: '1',
         label: messages?.community?.labels?.['alpha-group'] || 'ALPHA 男子组合',
-        image: '/image/home/bg1.png',
+        image: '/image/common/6.png',
       },
       {
         id: '2',
         label:
           messages?.community?.labels?.['black-rose'] || 'Black Rose 概念照',
-        image: '/image/home/bg.png',
+        image: '/image/common/2.png',
       },
     ],
     [messages]
@@ -317,8 +317,6 @@ export default function CommunityPage() {
   ]
 
   const [activeCategory, setActiveCategory] = useState(categoryOptions[0].key)
-  const [activeSort, setActiveSort] = useState(sortOptions[0].key)
-  const [activeTime, setActiveTime] = useState(timeOptions[0].key)
   const [searchQuery, setSearchQuery] = useState('')
   const [activeGroup, setActiveGroup] = useState(0)
   const [isVideoOverlayVisible, setIsVideoOverlayVisible] = useState(false)
@@ -490,8 +488,24 @@ export default function CommunityPage() {
       <section>
         {activeCategory === 'all' && (
           <div className="h-[460px] mt-[40px] flex justify-between mx-auto lg:w-[1248px]">
-            <div className="bg-[#fff] w-[605] h-full">{swipecount}</div>
-            <div className="bg-[#fff] w-[605] h-full">{swipecount}</div>
+            <div className=" bg-[#fff] w-[605] h-full rounded-lg">
+              <Image
+                src={groupedItems[0].image || ''}
+                alt={groupedItems[0].label || ''}
+                width={605}
+                height={460}
+                className="h-[460px] w-full object-cover rounded-lg"
+              />
+            </div>
+            <div className=" bg-[#fff] w-[605] h-full rounded-lg">
+              <Image
+                src={groupedItems[1].image || ''}
+                alt={groupedItems[1].label || ''}
+                width={605}
+                height={460}
+                className="h-[460px] w-full object-cover rounded-lg"
+              />
+            </div>
           </div>
         )}
       </section>

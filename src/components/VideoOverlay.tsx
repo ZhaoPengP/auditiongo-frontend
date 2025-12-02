@@ -37,7 +37,7 @@ interface VideoOverlayProps {
 export default function VideoOverlay({
   isVisible,
   onClose,
-  videoSrc = '/video/welcome.mp4', // 默认视频路径
+  videoSrc = 'https://webyyt.48.cn/owebtest/video1.mp4', // 默认视频路径
   autoPlay = true,
   loop = true,
   muted = true,
@@ -113,7 +113,7 @@ export default function VideoOverlay({
     >
       {/* 关闭按钮 */}
       <button
-        className="absolute top-6 right-6 z-30 p-2 rounded-full bg-black/50 text-white hover:bg-black/70 transition-colors cursor-pointer transform transition-transform hover:scale-110"
+        className="absolute top-24 right-6 z-30 p-2 rounded-full bg-black/50 text-white hover:bg-black/70 transition-colors cursor-pointer transform transition-transform hover:scale-110"
         onClick={onClose}
         aria-label="关闭视频"
       >

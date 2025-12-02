@@ -54,12 +54,53 @@
 }
 
 html {
-  font-size: 16px;
+  /* 默认字体大小 - 针对中等屏幕 */
+  font-size: 100px;
   -webkit-text-size-adjust: 100%;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   scroll-behavior: smooth;
   touch-action: manipulation;
+}
+
+/* 响应式字体大小 - 小屏幕设备 */
+
+@media (min-width: 1248px) {
+  html {
+    font-size: 100px;
+  }
+}
+@media (max-width: 1248px) {
+  html {
+    font-size: 90px;
+  }
+}
+@media (max-width: 1124px) {
+  html {
+    font-size: 80px;
+  }
+}
+@media (max-width: 824px) {
+  html {
+    font-size: 70px;
+  }
+}
+
+@media (max-width: 768px) {
+  html {
+    font-size: 60px;
+  }
+}
+@media (max-width: 624px) {
+  html {
+    font-size: 50px;
+  }
+}
+
+@media (max-width: 480px) {
+  html {
+    font-size: 40px;
+  }
 }
 
 body {

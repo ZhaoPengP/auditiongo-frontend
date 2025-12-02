@@ -2,7 +2,7 @@
 import SvgIcon from '@/components/SvgIcon'
 import Image from 'next/image'
 import { useEffect, useMemo, useState } from 'react'
-import { useRouter } from 'next/navigation'
+import { useRouter, useSearchParams } from 'next/navigation'
 import { useParams } from 'next/navigation'
 import { getMessages } from '@/lib/i18n'
 import figure_zh from '@/moke/figure_zh.json'
@@ -14,6 +14,7 @@ import figure_zh_TW from '@/moke/figure_zh_TW.json'
 export default function TeamIntroduction() {
   const { locale } = useParams() as { locale: string }
   const messages = getMessages(locale)
+  const searchParams = useSearchParams()
   const teamMembers = [
     {
       name: 'FELIX1',
@@ -146,8 +147,47 @@ export default function TeamIntroduction() {
     return () => window.removeEventListener('resize', handleResize)
   }, [])
 
+  const [activeGroup, setActiveGroup] = useState(0)
   const [activeIndex, setActiveIndex] = useState(0)
   const [isPlaying, setIsPlaying] = useState(false)
+
+  // 从URL参数获取并设置activeGroup和activeIndex
+  useEffect(() => {
+    const groupIdParam = searchParams.get('groupId')
+    const idParam = searchParams.get('id')
+
+    // 设置activeGroup
+    if (groupIdParam) {
+      const groupIdNum = parseInt(groupIdParam)
+      if (
+        !isNaN(groupIdNum) &&
+        groupIdNum >= 0 &&
+        groupIdNum < groupTabs.length
+      ) {
+        // 使用 flushSync 将 setState 移出 effect 同步更新，避免级联渲染
+        queueMicrotask(() => setActiveGroup(groupIdNum))
+      }
+    }
+
+    // 设置activeIndex
+    if (
+      idParam &&
+      groupTabs.length > 0 &&
+      groupTabs[activeGroup].children.length > 0
+    ) {
+      const idNum = parseInt(idParam)
+      if (!isNaN(idNum)) {
+        // 查找匹配id的成员索引
+        const memberIndex = groupTabs[activeGroup].children.findIndex(
+          (member) => member.id === idNum
+        )
+        if (memberIndex !== -1) {
+          // 使用 queueMicrotask 将 setState 移出 effect 同步更新，避免级联渲染
+          queueMicrotask(() => setActiveIndex(memberIndex))
+        }
+      }
+    }
+  }, [searchParams, groupTabs, activeGroup])
 
   // 切换团队成员索引的函数
   const changeActiveIndex = (direction?: number, groupIndex?: number) => {
@@ -177,8 +217,6 @@ export default function TeamIntroduction() {
       }, 300)
     }
   }
-
-  const [activeGroup, setActiveGroup] = useState(0)
   //   固定图标
   const fixedIcon = useMemo(() => {
     return (
@@ -201,6 +239,11 @@ export default function TeamIntroduction() {
     }, 0) // 动画持续时间
 
     return () => clearTimeout(timer)
+  }, [])
+
+  useEffect(() => {
+    // 页面加载时滚动到顶部
+    window.scrollTo({ top: 0, behavior: 'smooth' })
   }, [])
 
   const router = useRouter()

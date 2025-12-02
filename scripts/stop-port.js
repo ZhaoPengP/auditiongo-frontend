@@ -1,7 +1,6 @@
 #!/usr/bin/env node
 // 停止占用指定端口的进程
-// eslint-disable-next-line @typescript-eslint/no-require-imports
-const { execSync } = require('child_process')
+import { execSync } from 'child_process'
 const port = process.argv[2] || '9527'
 
 try {

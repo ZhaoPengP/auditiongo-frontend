@@ -8,6 +8,7 @@ import SvgIcon from './SvgIcon'
 export type FeatureItem = {
   id: string
   label: string
+  description?: string
   image?: string
   imageUrl?: string
   href?: string
@@ -280,7 +281,7 @@ export default function FeatureCarousel({
           />
         ) : (
           <div className="w-full h-full bg-white/10 flex items-center justify-center">
-            <span className="text-sm text-white/60">{item.label}</span>
+            <span className="text-[0.12rem] text-white/60">{item.label}</span>
           </div>
         )}
         {/* 渐变遮罩，让边缘更自然，只显示部分内容 */}
@@ -296,17 +297,24 @@ export default function FeatureCarousel({
   }
 
   return (
-    <div className="w-full relative">
+    <div className="w-full relative h-[100vh] flex flex-col items-center ">
       {/* 标题区域 */}
-      <div className="mt-20 mb-20">
-        <div className="mx-auto flex items-center justify-center h-[46px] w-[264px] bg-[url('/image/common/bg3.png')] bg-no-repeat bg-size-[264px_46px]">
+      <div className="mt-[0.8rem] mb-[0.08rem]">
+        {/* <div className="mx-auto flex items-center justify-center h-[46px] w-[264px] bg-[url('/image/common/bg3.png')] bg-no-repeat bg-size-[264px_46px]">
           <h2 className=" text-2xl font-bold text-white">游戏特色</h2>
-        </div>
+        </div> */}
+        <Image
+          src="/image/common/bg11.png"
+          alt="游戏特色"
+          width={910}
+          height={112}
+          className="object-cover mx-auto w-[80%] aspect-[910/112]"
+        />
       </div>
 
       {/* 轮播图区域 - 三张图片并排显示 */}
       <div
-        className={`relative w-full ${carouselHeight} mb-6 flex items-center justify-center gap-2`}
+        className={`relative w-full h-[calc(100%-300px)] mb-[0.24rem] flex items-center justify-center gap-[0.08rem]`}
         style={{ perspective: '1500px' }}
         onMouseEnter={handleMouseEnter}
         onMouseLeave={handleCarouselMouseLeave}
@@ -360,11 +368,43 @@ export default function FeatureCarousel({
         {/* 右侧预览（下一张） */}
         {items.length > 1 &&
           renderPreviewImage(nextItem, '-30deg', 'right', handleNextClick)}
+
+        {/* 左右控制按钮 */}
+        {showControls && items.length > 1 && (
+          <>
+            <button
+              className="absolute top-1/2 left-[-0.8rem] flex items-center justify-center z-20 cursor-pointer"
+              onClick={prev}
+              aria-label="上一张"
+            >
+              <SvgIcon
+                src="/svg/15583.svg"
+                alt="prev"
+                width={46}
+                height={46}
+                className="hover:transform hover:scale-130"
+              />
+            </button>
+            <button
+              className="absolute top-1/2 right-[-0.8rem] flex items-center justify-center z-20 cursor-pointer"
+              onClick={next}
+              aria-label="下一张"
+            >
+              <SvgIcon
+                src="/svg/15583.svg"
+                alt="next"
+                width={46}
+                height={46}
+                className="transform rotate-180 hover:transform hover:scale-130"
+              />
+            </button>
+          </>
+        )}
       </div>
 
       {/* 底部导航栏 */}
       <div
-        className="flex flex-wrap gap-3 justify-center mt-[40px]"
+        className="flex flex-wrap gap-[0.12rem] justify-center md:mt-[0] lg:mt-[0.4rem] "
         onMouseEnter={handleMouseEnter}
         onMouseLeave={handleCarouselMouseLeave}
       >
@@ -372,47 +412,20 @@ export default function FeatureCarousel({
           <button
             key={item.id}
             className={`
-              px-6 py-3 rounded-lg text-white text-sm font-medium transition-all cursor-pointer bg-white/10 hover-btn
+              px-[0.24rem] py-[0.12rem] rounded-lg  text-white font-medium transition-all cursor-pointer bg-white/10 hover-btn
               ${activeIndex === i ? `btn-tab` : ''}
             `}
             onClick={() => goToIndex(i)}
           >
-            {item.label}
+            <p className="text-center text-[0.14rem]">{item.label}</p>
+            {item.description && (
+              <p className="text-center text-[0.12rem] text-white/60">
+                {item.description}
+              </p>
+            )}
           </button>
         ))}
       </div>
-
-      {/* 左右控制按钮 */}
-      {showControls && items.length > 1 && (
-        <>
-          <button
-            className="absolute inset-y-0 left-[-80px] flex items-center justify-center z-20 cursor-pointer"
-            onClick={prev}
-            aria-label="上一张"
-          >
-            <SvgIcon
-              src="/svg/15583.svg"
-              alt="prev"
-              width={46}
-              height={46}
-              className="hover:transform hover:scale-130"
-            />
-          </button>
-          <button
-            className="absolute inset-y-0 right-[-80px] flex items-center justify-center z-20 cursor-pointer"
-            onClick={next}
-            aria-label="下一张"
-          >
-            <SvgIcon
-              src="/svg/15583.svg"
-              alt="next"
-              width={46}
-              height={46}
-              className="transform rotate-180 hover:transform hover:scale-130"
-            />
-          </button>
-        </>
-      )}
     </div>
   )
 }
